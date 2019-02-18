@@ -9,7 +9,9 @@
 import UIKit
 
 class AddItemViewController: UIViewController {
-
+    var chosenPriority:Priority!
+    
+    @IBOutlet var chosenPriorityLabel: UILabel!
     @IBOutlet var addItemView: UIView!
     @IBOutlet var addDateView: UIView!
     @IBOutlet var addPriorityView: UIView!
@@ -21,6 +23,7 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chosenPriority = Priority.Low
         //view.backgroundColor = UIColor.clear
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
@@ -73,9 +76,32 @@ class AddItemViewController: UIViewController {
         animateOut(thisSubview:activeSubview)
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func choosePriority(_ sender: UIButton) {
+       if sender.titleLabel!.text == "Low"
+       {
+        chosenPriority = Priority.Low
+        chosenPriorityLabel.text = "Chosen priority: Low"
+       }
+        else if sender.titleLabel!.text == "Medium"
+       {
+        chosenPriority = Priority.Medium
+        chosenPriorityLabel.text = "Chosen priority: Medium"
+       }
+        else if sender.titleLabel!.text == "High"
+       {
+        chosenPriority = Priority.High
+        chosenPriorityLabel.text = "Chosen priority: High"
+        }
+        print(chosenPriority)
+    }
     func changeAppearance(){
-        addItemView.layer.cornerRadius = 5
-        addItemView.layer.borderWidth = 3
-        addItemView.layer.borderColor =  UIColor.black.cgColor
+        let tabela = [addItemView,addDateView,addPriorityView]
+        for chosenView in tabela
+        {
+        chosenView!.layer.cornerRadius = 10
+        chosenView!.layer.borderWidth = 1
+        chosenView!.layer.borderColor =  UIColor.black.cgColor
+        }
     }
 }

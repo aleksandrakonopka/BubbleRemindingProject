@@ -13,12 +13,12 @@
         <!--Bubbles View Controller-->
         <scene sceneID="Z4C-7d-sKn">
             <objects>
-                <viewController id="opb-TO-D1N" customClass="BubblesViewController" customModule="GetYourFavouritePlaces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="opb-TO-D1N" customClass="BubblesViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lc8-09-AaK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yj-kI-Qom" customClass="BubblePicker" customModule="GetYourFavouritePlaces" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yj-kI-Qom" customClass="BubblePicker" customModule="BubbleRemindingProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="112" width="375" height="555"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +55,7 @@
         <!--View Controller-->
         <scene sceneID="6sr-Fe-sp2">
             <objects>
-                <viewController id="L71-h2-XVR" customClass="ViewController" customModule="GetYourFavouritePlaces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L71-h2-XVR" customClass="ViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pSW-Yz-zyj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +128,7 @@
         <!--Favourites View Controller-->
         <scene sceneID="Ozu-Ov-28f">
             <objects>
-                <viewController id="NrS-MC-fac" customClass="FavouritesViewController" customModule="GetYourFavouritePlaces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NrS-MC-fac" customClass="FavouritesViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PhO-Ry-RUt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,7 +184,7 @@
         <!--To Do Table View Controller-->
         <scene sceneID="lls-ae-Y86">
             <objects>
-                <viewController id="H4R-kr-ahw" customClass="ToDoTableViewController" customModule="GetYourFavouritePlaces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="H4R-kr-ahw" customClass="ToDoTableViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aou-dd-8Wz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,7 +255,7 @@
         <!--Add View Controller-->
         <scene sceneID="rP9-lE-mEq">
             <objects>
-                <viewController id="XXv-Wd-pGq" customClass="AddViewController" customModule="GetYourFavouritePlaces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XXv-Wd-pGq" customClass="AddViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mIu-ob-osT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +341,7 @@
         <!--Add Item View Controller-->
         <scene sceneID="VG4-A5-Pn1">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="ioY-kz-pRj" customClass="AddItemViewController" customModule="GetYourFavouritePlaces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="ioY-kz-pRj" customClass="AddItemViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="LAn-9S-nQ4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,6 +362,7 @@
                         <outlet property="addDateView" destination="Sgv-bV-ptH" id="fP9-NG-y5d"/>
                         <outlet property="addItemView" destination="lEv-JW-kfI" id="je3-Kt-ebS"/>
                         <outlet property="addPriorityView" destination="PoV-cE-p7R" id="2H4-do-lSs"/>
+                        <outlet property="chosenPriorityLabel" destination="KfX-xZ-EiP" id="0rc-8R-rfl"/>
                         <outlet property="deadlineNextButton" destination="JkJ-YV-f1A" id="tRA-5M-4ZX"/>
                         <outlet property="itemNextButton" destination="Kr7-yM-l3G" id="RbX-dJ-yIN"/>
                         <outlet property="priorityDoneButton" destination="gTl-9q-t6c" id="jFq-WG-heQ"/>
@@ -369,34 +370,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hot-8y-avP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="lEv-JW-kfI" userLabel="Add Item View">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="213"/>
+                    <rect key="frame" x="0.0" y="0.0" width="280" height="213"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgk-ei-ZHC">
-                            <rect key="frame" x="16" y="91" width="208" height="30"/>
+                            <rect key="frame" x="36" y="83" width="208" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3e-DO-5p9">
-                            <rect key="frame" x="16" y="170" width="48" height="30"/>
+                            <rect key="frame" x="36" y="153" width="85" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cancel"/>
+                            <color key="backgroundColor" red="0.60134583499583183" green="0.82782756979695438" blue="0.76525986363406351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="KDT-xT-yjw"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kr7-yM-l3G">
-                            <rect key="frame" x="192" y="170" width="32" height="30"/>
+                            <rect key="frame" x="159" y="153" width="85" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Next"/>
+                            <color key="backgroundColor" red="0.60134583499583183" green="0.82782756979695438" blue="0.76525986363406351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="Next">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="m1I-kn-6OF"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3v-kd-lBS">
-                            <rect key="frame" x="88" y="20" width="65" height="21"/>
+                            <rect key="frame" x="108" y="20" width="65" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -407,13 +416,16 @@
                     <viewLayoutGuide key="safeArea" id="uZ1-7U-24f"/>
                 </view>
                 <view contentMode="scaleToFill" id="Sgv-bV-ptH" userLabel="Add Date View">
-                    <rect key="frame" x="0.0" y="0.0" width="278" height="213"/>
+                    <rect key="frame" x="0.0" y="0.0" width="280" height="213"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZB-o4-hSj">
-                            <rect key="frame" x="16" y="169" width="48" height="30"/>
+                            <rect key="frame" x="16" y="153" width="85" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cancel"/>
+                            <color key="backgroundColor" red="0.60134583500000005" green="0.82782756980000005" blue="0.76525986359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="KeZ-hJ-Vii"/>
                             </connections>
@@ -425,72 +437,99 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkJ-YV-f1A">
+                            <rect key="frame" x="185" y="153" width="85" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.60134583500000005" green="0.82782756980000005" blue="0.76525986359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Next">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="HOm-MZ-jIY"/>
+                            </connections>
+                        </button>
                         <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bY6-xg-kiZ">
-                            <rect key="frame" x="8" y="49" width="262" height="111"/>
+                            <rect key="frame" x="8" y="49" width="264" height="111"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <date key="date" timeIntervalSinceReferenceDate="572192404.88344896">
                                 <!--2019-02-18 14:20:04 +0000-->
                             </date>
                         </datePicker>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkJ-YV-f1A">
-                            <rect key="frame" x="223" y="169" width="32" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Next"/>
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="HOm-MZ-jIY"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="aCp-gb-oxb"/>
                 </view>
                 <view contentMode="scaleToFill" id="PoV-cE-p7R" userLabel="Add Priority View ">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="211"/>
+                    <rect key="frame" x="0.0" y="0.0" width="280" height="213"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19e-U3-wj5">
-                            <rect key="frame" x="16" y="168" width="48" height="30"/>
+                            <rect key="frame" x="28" y="153" width="85" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Cancel"/>
+                            <color key="backgroundColor" red="0.60134583500000005" green="0.82782756980000005" blue="0.76525986359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="1WL-99-zkI"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCT-fl-ts1">
-                            <rect key="frame" x="61" y="20" width="118" height="21"/>
+                            <rect key="frame" x="81" y="17" width="118" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-j0-9g6">
-                            <rect key="frame" x="16" y="69" width="46" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Low"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG8-J4-rYl">
-                            <rect key="frame" x="93" y="69" width="55" height="30"/>
+                            <rect key="frame" x="106" y="59" width="70" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Medium"/>
+                            <color key="backgroundColor" red="0.93678616751269039" green="0.780901122279545" blue="0.58735642493287432" alpha="0.30902183219178081" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Medium">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="choosePriority:" destination="ioY-kz-pRj" eventType="touchUpInside" id="zym-sK-98N"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chosen priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfX-xZ-EiP">
-                            <rect key="frame" x="8" y="123" width="224" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chosen priority: Low" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfX-xZ-EiP">
+                            <rect key="frame" x="28" y="120" width="224" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8O-zB-UYp">
-                            <rect key="frame" x="181" y="69" width="32" height="30"/>
+                            <rect key="frame" x="182" y="59" width="70" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="High"/>
+                            <color key="backgroundColor" red="0.98664540050000005" green="0.65085557199999999" blue="0.64125636649999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="High">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="choosePriority:" destination="ioY-kz-pRj" eventType="touchUpInside" id="bUV-O4-3n4"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTl-9q-t6c">
-                            <rect key="frame" x="181" y="168" width="46" height="30"/>
+                            <rect key="frame" x="179" y="153" width="85" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Save"/>
+                            <color key="backgroundColor" red="0.60134583500000005" green="0.82782756980000005" blue="0.76525986359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Save">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="pSV-rl-LaR"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-j0-9g6">
+                            <rect key="frame" x="28" y="59" width="70" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.39185210598544029" green="1" blue="0.76579534512290337" alpha="0.30902183219178081" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Low">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="choosePriority:" destination="ioY-kz-pRj" eventType="touchUpInside" id="lLK-zo-ytk"/>
                             </connections>
                         </button>
                     </subviews>
