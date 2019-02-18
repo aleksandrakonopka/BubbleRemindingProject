@@ -25,7 +25,7 @@ class AddItemViewController: UIViewController {
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
         changeAppearance()
-        print("dziala!")
+        //print("dziala!")
         // Do any additional setup after loading the view.
     }
     func animateIn(thisSubview:UIView)
