@@ -21,6 +21,8 @@ protocol SendBackMyListOfItemsToTable
 class AddItemViewController: UIViewController {
     
     var favouritePlaces = [FavouritePlace]()
+    var selectedRow : IndexPath!
+    @IBOutlet var myTable: UITableView!
     
     var delegate : SendBackMyListOfItems?
     var tabledelegate : SendBackMyListOfItemsToTable?
@@ -38,10 +40,14 @@ class AddItemViewController: UIViewController {
     var chosenItemName:String!
     var chosenPlaceName = "Noname"
     
+    @IBOutlet var youHaveChosenThisPlaceLabel: UILabel!
     @IBOutlet var chosenPriorityLabel: UILabel!
+    
     @IBOutlet var addItemView: UIView!
     @IBOutlet var addDateView: UIView!
     @IBOutlet var addPriorityView: UIView!
+    @IBOutlet var addPlaceNameView: UIView!
+    
     var activeSubview : UIView!
     
     @IBOutlet var deadlineNextButton: UIButton!
@@ -54,6 +60,7 @@ class AddItemViewController: UIViewController {
         chosenPriority = Priority.Low
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
+        //animateIn(thisSubview:addPlaceNameView)
         changeAppearance()
         //print("Favourite Places \(favouritePlaces)")
         // Do any additional setup after loading the view.
@@ -98,6 +105,24 @@ class AddItemViewController: UIViewController {
         {
             chosenDate = itemDataPicker.date
             animateOut(thisSubview:activeSubview)
+            if (chosenPlaceName == "Noname")
+            {
+                activeSubview = addPlaceNameView
+                animateIn(thisSubview:activeSubview)
+            }
+            else
+            {
+                activeSubview = addPriorityView
+                animateIn(thisSubview:activeSubview)
+            }
+        }
+        else if sender.tag == 3
+        {
+            if(selectedRow != nil)
+            {
+                myTable.deselectRow(at: selectedRow, animated: true)
+            }
+            animateOut(thisSubview:activeSubview)
             activeSubview = addPriorityView
             animateIn(thisSubview:activeSubview)
         }
@@ -105,13 +130,20 @@ class AddItemViewController: UIViewController {
         {
             animateOut(thisSubview:activeSubview)
             activeSubview = nil
+            youHaveChosenThisPlaceLabel.text = "No place is chosen"
             saveItemToArray()
             self.dismiss(animated: true, completion: nil)
         }
     }
     @IBAction func cancelButton(_ sender: UIButton) {
         animateOut(thisSubview:activeSubview)
+        youHaveChosenThisPlaceLabel.text = "No place is chosen"
+        chosenPlaceName = "Noname"
         alertLabel.text = ""
+        if(selectedRow != nil)
+        {
+            myTable.deselectRow(at: selectedRow, animated: true)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -134,7 +166,7 @@ class AddItemViewController: UIViewController {
         print(chosenPriority)
     }
     func changeAppearance(){
-        let tabela = [addItemView,addDateView,addPriorityView]
+        let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView]
         for chosenView in tabela
         {
         chosenView!.layer.cornerRadius = 10
@@ -161,4 +193,41 @@ class AddItemViewController: UIViewController {
             print("Error encoding item array \(error)")
         }
     }
+    
+    @IBAction func chooseNoNameButtonPressed(_ sender: UIButton) {
+        youHaveChosenThisPlaceLabel.text = "No place is chosen"
+        chosenPlaceName = "Noname"
+        if(selectedRow != nil)
+        {
+        myTable.deselectRow(at: selectedRow, animated: true)
+        }
+    }
+}
+extension AddItemViewController : UITableViewDelegate
+{
+    
+}
+extension AddItemViewController : UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        youHaveChosenThisPlaceLabel.text = "You have chosen \(favouritePlaces[indexPath.row].name)"
+        chosenPlaceName = favouritePlaces[indexPath.row].name
+        self.selectedRow = indexPath
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        youHaveChosenThisPlaceLabel.text = "No place is chosen"
+        chosenPlaceName = "Noname"
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favouritePlaces.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cellInView")
+        cell.textLabel?.text = favouritePlaces[indexPath.row].name
+        return cell
+    }
+    
+    
 }

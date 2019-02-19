@@ -361,6 +361,7 @@
                     <connections>
                         <outlet property="addDateView" destination="Sgv-bV-ptH" id="fP9-NG-y5d"/>
                         <outlet property="addItemView" destination="lEv-JW-kfI" id="je3-Kt-ebS"/>
+                        <outlet property="addPlaceNameView" destination="0EN-Rx-x75" id="1Cl-LE-ytE"/>
                         <outlet property="addPriorityView" destination="PoV-cE-p7R" id="2H4-do-lSs"/>
                         <outlet property="alertLabel" destination="gHM-PG-n4U" id="EU7-Ir-YdF"/>
                         <outlet property="chosenPriorityLabel" destination="KfX-xZ-EiP" id="0rc-8R-rfl"/>
@@ -368,21 +369,73 @@
                         <outlet property="itemDataPicker" destination="bY6-xg-kiZ" id="IPi-52-CBT"/>
                         <outlet property="itemNextButton" destination="Kr7-yM-l3G" id="RbX-dJ-yIN"/>
                         <outlet property="itemTextField" destination="vgk-ei-ZHC" id="fwI-7K-fvf"/>
+                        <outlet property="myTable" destination="mot-p1-nGn" id="jEd-4m-83s"/>
                         <outlet property="priorityDoneButton" destination="gTl-9q-t6c" id="jFq-WG-heQ"/>
+                        <outlet property="youHaveChosenThisPlaceLabel" destination="Isp-Lx-NQv" id="sFj-zD-qWR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hot-8y-avP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="0EN-Rx-x75" userLabel="Add Place View">
-                    <rect key="frame" x="0.0" y="0.0" width="280" height="213"/>
+                    <rect key="frame" x="0.0" y="0.0" width="280" height="328"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose place for this ToDoItem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCq-Eh-Z1X">
-                            <rect key="frame" x="20" y="8" width="241" height="21"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mot-p1-nGn">
+                            <rect key="frame" x="7" y="51" width="266" height="191"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <prototypes>
+                                <tableViewCell clipsSubviews="YES" tag="3" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellInView" id="tgo-63-yZu">
+                                    <rect key="frame" x="0.0" y="28" width="266" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tgo-63-yZu" id="zII-cz-HYJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="266" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </tableViewCellContentView>
+                                </tableViewCell>
+                            </prototypes>
+                            <connections>
+                                <outlet property="dataSource" destination="ioY-kz-pRj" id="vnZ-J8-Hrg"/>
+                                <outlet property="delegate" destination="ioY-kz-pRj" id="gAd-Il-E9e"/>
+                            </connections>
+                        </tableView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No place is chosen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isp-Lx-NQv">
+                            <rect key="frame" x="0.0" y="250" width="280" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjz-wo-fQf">
+                            <rect key="frame" x="7" y="277" width="48" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="x3p-3K-4bM"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose place for this ToDoItem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCq-Eh-Z1X">
+                            <rect key="frame" x="20" y="20" width="241" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKG-kL-0qL">
+                            <rect key="frame" x="81" y="277" width="118" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Choose No Place"/>
+                            <connections>
+                                <action selector="chooseNoNameButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="Ivb-PT-zGS"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mnj-dv-Mil">
+                            <rect key="frame" x="219" y="276" width="32" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Next"/>
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="972-Zw-g0f"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="Q4T-J4-yIZ"/>
