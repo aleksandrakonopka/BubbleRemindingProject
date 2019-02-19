@@ -162,7 +162,7 @@ public class BubblePicker: UIView {
         //        let node = delegate.bubblePicker(self, nodeFor: IndexPath(item: 0, section: 0))
         //        node.index = 0
         //        node.bubblepicker = self
-        for _ in 0..<items
+        for _ in 0..<items-1
         {
             BPGravity.removeItem(nodes[0])
             BPDynamics.removeItem(nodes[0])

@@ -59,11 +59,11 @@ class BubblesViewController: UIViewController {
         
         func bubblePicker(_: BubblePicker, didSelectNodeAt indexPath: IndexPath) {
            // addItem()
-            if items[indexPath.row].item == "dupa"
-            {
-                addItem()
-                //bubblePicker.changeNodeSize(indexPath: indexPath)
-            }
+//            if items[indexPath.row].item == "dupa"
+//            {
+//                addItem()
+//                //bubblePicker.changeNodeSize(indexPath: indexPath)
+//            }
         
         }
         
@@ -82,11 +82,18 @@ class BubblesViewController: UIViewController {
             {
                 let addVC = segue.destination as! AddItemViewController
                 addVC.allMyItems = items
-               // addVC.delegate = self
+                addVC.delegate = self
             }
         }
     }
-
+extension BubblesViewController: SendBackMyListOfItems
+{
+    func toDoListArrayReceived(listOfItems: [ToDoItem]) {
+        items = listOfItems
+        addItem()
+        print("weszlo")
+        }
+}
     /*
     // MARK: - Navigation
 

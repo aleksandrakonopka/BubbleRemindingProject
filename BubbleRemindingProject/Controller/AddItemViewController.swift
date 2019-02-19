@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol SendBackMyListOfItems
+{
+    func toDoListArrayReceived(listOfItems:[ToDoItem])
+}
+
 class AddItemViewController: UIViewController {
-    
+    var delegate : SendBackMyListOfItems?
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
     
     var allMyItems = [ToDoItem]()
@@ -131,6 +136,7 @@ class AddItemViewController: UIViewController {
     {
         let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)
         allMyItems.append(newItem)
+        delegate?.toDoListArrayReceived(listOfItems:allMyItems)
         saveItemToPlist()
     }
     func saveItemToPlist()
