@@ -23,4 +23,8 @@ struct ToDoItem:Codable {
         self.priority = priority
         self.date = date
     }
+    init()
+    {
+        self.init(placeName: "PlaceName",item: "ItemName",priority:Priority.Low, date: Date())
+    }
 }

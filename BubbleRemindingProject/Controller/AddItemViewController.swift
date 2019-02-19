@@ -10,6 +10,9 @@ import UIKit
 
 class AddItemViewController: UIViewController {
     
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
+    
+    var allMyItems = [ToDoItem]()
     @IBOutlet var alertLabel: UILabel!
     
     @IBOutlet var itemTextField: UITextField!
@@ -87,7 +90,7 @@ class AddItemViewController: UIViewController {
         {
             animateOut(thisSubview:activeSubview)
             activeSubview = nil
-            saveItemToPlist()
+            saveItemToArray()
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -124,11 +127,21 @@ class AddItemViewController: UIViewController {
         chosenView!.layer.borderColor =  UIColor.black.cgColor
         }
     }
+    func saveItemToArray()
+    {
+        let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)
+        allMyItems.append(newItem)
+        saveItemToPlist()
+    }
     func saveItemToPlist()
     {
-        print(chosenPlaceName)
-        print(chosenDate)
-        print(chosenItemName)
-        print(chosenPriority)
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(self.allMyItems)
+            try data.write(to:self.dataFilePath!)
+        }
+        catch {
+            print("Error encoding item array \(error)")
+        }
     }
 }
