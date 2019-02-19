@@ -9,7 +9,17 @@
 import UIKit
 
 class AddItemViewController: UIViewController {
+    
+    @IBOutlet var alertLabel: UILabel!
+    
+    @IBOutlet var itemTextField: UITextField!
+    @IBOutlet var itemDataPicker: UIDatePicker!
+    
+    
     var chosenPriority:Priority!
+    var chosenDate:Date!
+    var chosenItemName:String!
+    var chosenPlaceName: String!
     
     @IBOutlet var chosenPriorityLabel: UILabel!
     @IBOutlet var addItemView: UIView!
@@ -23,12 +33,11 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chosenPlaceName = "Noname"
         chosenPriority = Priority.Low
-        //view.backgroundColor = UIColor.clear
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
         changeAppearance()
-        //print("dziala!")
         // Do any additional setup after loading the view.
     }
     func animateIn(thisSubview:UIView)
@@ -55,12 +64,21 @@ class AddItemViewController: UIViewController {
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         if sender.tag == 0
         {
+            if itemTextField.text!.count>1 {
+            chosenItemName = itemTextField.text
+            alertLabel.text = ""
             animateOut(thisSubview:activeSubview)
             activeSubview = addDateView
             animateIn(thisSubview:activeSubview)
+            }
+            else
+            {
+               alertLabel.text = "Item name is too short"
+            }
         }
         else if sender.tag == 1
         {
+            chosenDate = itemDataPicker.date
             animateOut(thisSubview:activeSubview)
             activeSubview = addPriorityView
             animateIn(thisSubview:activeSubview)
@@ -69,11 +87,13 @@ class AddItemViewController: UIViewController {
         {
             animateOut(thisSubview:activeSubview)
             activeSubview = nil
+            saveItemToPlist()
             self.dismiss(animated: true, completion: nil)
         }
     }
     @IBAction func cancelButton(_ sender: UIButton) {
         animateOut(thisSubview:activeSubview)
+        alertLabel.text = ""
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -103,5 +123,12 @@ class AddItemViewController: UIViewController {
         chosenView!.layer.borderWidth = 1
         chosenView!.layer.borderColor =  UIColor.black.cgColor
         }
+    }
+    func saveItemToPlist()
+    {
+        print(chosenPlaceName)
+        print(chosenDate)
+        print(chosenItemName)
+        print(chosenPriority)
     }
 }

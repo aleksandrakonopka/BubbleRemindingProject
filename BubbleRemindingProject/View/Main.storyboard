@@ -362,9 +362,12 @@
                         <outlet property="addDateView" destination="Sgv-bV-ptH" id="fP9-NG-y5d"/>
                         <outlet property="addItemView" destination="lEv-JW-kfI" id="je3-Kt-ebS"/>
                         <outlet property="addPriorityView" destination="PoV-cE-p7R" id="2H4-do-lSs"/>
+                        <outlet property="alertLabel" destination="gHM-PG-n4U" id="EU7-Ir-YdF"/>
                         <outlet property="chosenPriorityLabel" destination="KfX-xZ-EiP" id="0rc-8R-rfl"/>
                         <outlet property="deadlineNextButton" destination="JkJ-YV-f1A" id="tRA-5M-4ZX"/>
+                        <outlet property="itemDataPicker" destination="bY6-xg-kiZ" id="IPi-52-CBT"/>
                         <outlet property="itemNextButton" destination="Kr7-yM-l3G" id="RbX-dJ-yIN"/>
+                        <outlet property="itemTextField" destination="vgk-ei-ZHC" id="fwI-7K-fvf"/>
                         <outlet property="priorityDoneButton" destination="gTl-9q-t6c" id="jFq-WG-heQ"/>
                     </connections>
                 </viewController>
@@ -409,6 +412,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHM-PG-n4U">
+                            <rect key="frame" x="36" y="124" width="208" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.31605869776302975" blue="0.33570003242195645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
