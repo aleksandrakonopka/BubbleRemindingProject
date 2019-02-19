@@ -151,6 +151,7 @@ class ToDoTableViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     func fillArrayInPlace()
     {
+        arrayInPlace = []
         if array != nil{
             for element in array!
             {
@@ -168,6 +169,7 @@ extension ToDoTableViewController : SendBackMyListOfItemsToTable
 {
     func toDoListArrayReceived(listOfItems: [ToDoItem]) {
         array = listOfItems
+        //print("ARRAY TESTING \(array)")
         fillArrayInPlace()
         self.myTable.reloadData()
     }
