@@ -19,6 +19,9 @@ protocol SendBackMyListOfItemsToTable
 }
 
 class AddItemViewController: UIViewController {
+    
+    var favouritePlaces = [FavouritePlace]()
+    
     var delegate : SendBackMyListOfItems?
     var tabledelegate : SendBackMyListOfItemsToTable?
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
@@ -52,6 +55,7 @@ class AddItemViewController: UIViewController {
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
         changeAppearance()
+        //print("Favourite Places \(favouritePlaces)")
         // Do any additional setup after loading the view.
     }
     func animateIn(thisSubview:UIView)

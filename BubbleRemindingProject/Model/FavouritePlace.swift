@@ -19,5 +19,9 @@ struct FavouritePlace : Codable {
         self.long = long
         self.lat = lat
     }
+    init()
+    {
+        self.init(name: "Nameless", long: 1.0, lat: 1.0)
+    }
     //dodac pustego inita jesli chce stworzc tablice pusta 
 }

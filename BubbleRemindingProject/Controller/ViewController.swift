@@ -91,6 +91,14 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             {
                bubbleVC.items = []
             }
+            if ( tabFav != nil )
+            {
+            bubbleVC.favouritePlaces = tabFav!
+            }
+            else
+            {
+            bubbleVC.favouritePlaces = []
+            }
         }
     }
     func placeReceived(place: FavouritePlace){

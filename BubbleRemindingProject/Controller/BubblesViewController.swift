@@ -15,6 +15,7 @@ protocol SendBackMyListOfItemsFromBubblesToView
 
 class BubblesViewController: UIViewController {
     var delegate : SendBackMyListOfItemsFromBubblesToView?
+    var favouritePlaces = [FavouritePlace]()
     @IBOutlet weak var bubblePicker: BubblePicker!
     var items: [ToDoItem] = []
     
@@ -88,6 +89,7 @@ class BubblesViewController: UIViewController {
             {
                 let addVC = segue.destination as! AddItemViewController
                 addVC.allMyItems = items
+                addVC.favouritePlaces = favouritePlaces
                 addVC.delegate = self
             }
         }
