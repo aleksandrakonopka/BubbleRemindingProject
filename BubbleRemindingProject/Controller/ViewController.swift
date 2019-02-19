@@ -82,6 +82,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         if segue.identifier == "goToBubbles"
         {
             let bubbleVC = segue.destination as! BubblesViewController
+            bubbleVC.delegate = self
             if ( arrayToDoItem != nil)
             {
             bubbleVC.items = arrayToDoItem!
@@ -259,4 +260,11 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
     }
     
 }
-
+extension ViewController : SendBackMyListOfItemsFromBubblesToView
+{
+    func toDoListArrayReceivedFromBubbles(listOfItems: [ToDoItem]) {
+        arrayToDoItem = listOfItems
+    }
+    
+    
+}

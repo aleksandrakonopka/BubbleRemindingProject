@@ -8,8 +8,13 @@
 
 import UIKit
 
-class BubblesViewController: UIViewController {
+protocol SendBackMyListOfItemsFromBubblesToView
+{
+    func toDoListArrayReceivedFromBubbles(listOfItems:[ToDoItem])
+}
 
+class BubblesViewController: UIViewController {
+    var delegate : SendBackMyListOfItemsFromBubblesToView?
     @IBOutlet weak var bubblePicker: BubblePicker!
     var items: [ToDoItem] = []
     
@@ -23,6 +28,7 @@ class BubblesViewController: UIViewController {
         performSegue(withIdentifier: "goToAddFromBubbles", sender: self)
     }
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        delegate?.toDoListArrayReceivedFromBubbles(listOfItems:items)
         dismiss(animated: true, completion:nil)
     }
 }
