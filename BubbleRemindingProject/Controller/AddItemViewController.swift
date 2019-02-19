@@ -13,8 +13,14 @@ protocol SendBackMyListOfItems
     func toDoListArrayReceived(listOfItems:[ToDoItem])
 }
 
+protocol SendBackMyListOfItemsToTable
+{
+    func toDoListArrayReceived(listOfItems:[ToDoItem])
+}
+
 class AddItemViewController: UIViewController {
     var delegate : SendBackMyListOfItems?
+    var tabledelegate : SendBackMyListOfItemsToTable?
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
     
     var allMyItems = [ToDoItem]()
@@ -27,7 +33,7 @@ class AddItemViewController: UIViewController {
     var chosenPriority:Priority!
     var chosenDate:Date!
     var chosenItemName:String!
-    var chosenPlaceName: String!
+    var chosenPlaceName = "Noname"
     
     @IBOutlet var chosenPriorityLabel: UILabel!
     @IBOutlet var addItemView: UIView!
@@ -41,7 +47,7 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chosenPlaceName = "Noname"
+        //chosenPlaceName = "Noname"
         chosenPriority = Priority.Low
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
@@ -137,6 +143,7 @@ class AddItemViewController: UIViewController {
         let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)
         allMyItems.append(newItem)
         delegate?.toDoListArrayReceived(listOfItems:allMyItems)
+        tabledelegate?.toDoListArrayReceived(listOfItems: allMyItems)
         saveItemToPlist()
     }
     func saveItemToPlist()

@@ -131,6 +131,23 @@ class ToDoTableViewController: UIViewController,UITableViewDelegate,UITableViewD
 //            }
 //        }
 //    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToAddFromTable"
+        {
+            let addVC = segue.destination as! AddItemViewController
+            if array != nil
+            {
+            addVC.allMyItems = array!
+            }
+            else
+            {
+              addVC.allMyItems = []
+            }
+            addVC.tabledelegate = self
+            addVC.chosenPlaceName = placeId
+            print("PLACEID \(placeId)")
+        }
+    }
     func fillArrayInPlace()
     {
         if array != nil{
@@ -145,4 +162,14 @@ class ToDoTableViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
         //print("ARRAYINPLACE:\(arrayInPlace!)")
     }
+}
+extension ToDoTableViewController : SendBackMyListOfItemsToTable
+{
+    func toDoListArrayReceived(listOfItems: [ToDoItem]) {
+        array = listOfItems
+        fillArrayInPlace()
+        self.myTable.reloadData()
+    }
+    
+    
 }
