@@ -77,7 +77,14 @@ class BubblesViewController: UIViewController {
             bubblePicker.deleteAll()
             bubblePicker.loadData()
         }
-        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "goToAddFromBubbles"
+            {
+                let addVC = segue.destination as! AddItemViewController
+                addVC.allMyItems = items
+               // addVC.delegate = self
+            }
+        }
     }
 
     /*
