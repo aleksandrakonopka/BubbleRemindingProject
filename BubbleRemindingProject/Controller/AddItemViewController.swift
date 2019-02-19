@@ -23,6 +23,7 @@ class AddItemViewController: UIViewController {
     var favouritePlaces = [FavouritePlace]()
     var selectedRow : IndexPath!
     @IBOutlet var myTable: UITableView!
+    var segueFromTable = false
     
     var delegate : SendBackMyListOfItems?
     var tabledelegate : SendBackMyListOfItemsToTable?
@@ -105,13 +106,14 @@ class AddItemViewController: UIViewController {
         {
             chosenDate = itemDataPicker.date
             animateOut(thisSubview:activeSubview)
-            if (chosenPlaceName == "Noname")
+            if (chosenPlaceName == "Noname" && segueFromTable == false)
             {
                 activeSubview = addPlaceNameView
                 animateIn(thisSubview:activeSubview)
             }
             else
             {
+                segueFromTable = false
                 activeSubview = addPriorityView
                 animateIn(thisSubview:activeSubview)
             }

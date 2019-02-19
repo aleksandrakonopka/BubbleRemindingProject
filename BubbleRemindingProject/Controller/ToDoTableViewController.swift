@@ -145,6 +145,7 @@ class ToDoTableViewController: UIViewController,UITableViewDelegate,UITableViewD
             }
             addVC.tabledelegate = self
             addVC.chosenPlaceName = placeId
+            addVC.segueFromTable = true
             print("PLACEID \(placeId)")
         }
     }
