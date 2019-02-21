@@ -58,7 +58,7 @@ class BubblesViewController: UIViewController {
             {
                 chosenSize = 50.0
             }
-            let node = BubblePickerNode(title: items[indexPath.row].item, color: UIColor.purple, image: UIImage(named: "ipad.jpg")!, size: chosenSize, pickedTimesSize: 1.6)
+            let node = BubblePickerNode(title: items[indexPath.row].item, color: UIColor.purple, image: UIImage(named: "gradient2.jpg")!, size: chosenSize, pickedTimesSize: 1.2)
             
             if items[indexPath.row].priority == Priority.Low
             {
@@ -78,13 +78,17 @@ class BubblesViewController: UIViewController {
         }
         
         func bubblePicker(_: BubblePicker, didSelectNodeAt indexPath: IndexPath) {
+            // dodac godzine i minuty
+            var dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+            
              selectedBubbleIndex = indexPath.row
              selectedBubbleName = items[indexPath.row].item
              selectedBubblePlace = items[indexPath.row].placeName
              selectedBubbleDate = items[indexPath.row].date
              selectedBubblePriority = items[indexPath.row].priority
             
-         setSelectedLabels(name:selectedBubbleName,place:selectedBubblePlace,date:selectedBubbleDate,priority:selectedBubblePriority)
+         setSelectedLabels(name:selectedBubbleName,place:selectedBubblePlace,date:dateFormatter.string(from:selectedBubbleDate),priority:selectedBubblePriority.rawValue)
            // addItem()
 //            if items[indexPath.row].item == "dupa"
 //            {
@@ -95,6 +99,7 @@ class BubblesViewController: UIViewController {
         }
         
         func bubblePicker(_: BubblePicker, didDeselectNodeAt indexPath: IndexPath) {
+            setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
             return
         }
         
@@ -113,14 +118,12 @@ class BubblesViewController: UIViewController {
                 addVC.delegate = self
             }
         }
-        func setSelectedLabels(name:String,place:String,date:Date,priority:Priority)
+        func setSelectedLabels(name:String,place:String,date:String,priority:String)
         {
-            var dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM-dd-yyyy" // dodac godzine i minuty
             selectedNameLabel.text = "Name: \(name)"
             selectedPlaceLabel.text = "Place:  \(place)"
-            selectedDateLabel.text = "Date: \(dateFormatter.string(from:date))"
-            selectedPriorityLabel.text = "Priority: \(priority.rawValue)"
+            selectedDateLabel.text = "Date: \(date)"
+            selectedPriorityLabel.text = "Priority: \(priority)"
         }
     }
 extension BubblesViewController: SendBackMyListOfItems

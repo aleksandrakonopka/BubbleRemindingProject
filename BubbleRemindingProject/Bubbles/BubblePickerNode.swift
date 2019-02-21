@@ -101,36 +101,36 @@ public class BubblePickerNode: UIView {
         self.bubblepicker.BPAnimator.removeBehavior(self.bubblepicker.BPCollision)
         
         var maskPath: UIBezierPath!
-        
+//od tąd
         if(!isExpanded){
 //            self.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 100))
              self.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: bubbleSize, height: bubbleSize))
-            
+
             maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: bounds.width - 6, height: bounds.height - 6), cornerRadius: 1000)
-            
+
             imageView.frame = CGRect(x: 0, y: 0, width: pickedBubbleTimesSize * bubbleSize, height: pickedBubbleTimesSize * bubbleSize);
             imageView.alpha = 0;
-            
+
             self.label.frame = self.bounds
             self.label.font = self.font
         }
         else{
             self.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: pickedBubbleTimesSize * bubbleSize, height: pickedBubbleTimesSize * bubbleSize))
-            
+
             imageView.frame = CGRect(x: 0, y: 0, width: pickedBubbleTimesSize * bubbleSize, height: pickedBubbleTimesSize * bubbleSize);
             imageView.alpha = 0.5;
-            
+
             maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: bounds.width - 6, height: bounds.height - 6), cornerRadius: 1000)
-            
+
             self.label.frame = self.bounds
             self.label.font = self.selectedFont;
         }
-        
+
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds
         maskLayer.path = maskPath.cgPath
         self.layer.mask = maskLayer
-        
+     //do tąd
         self.bubblepicker.BPAnimator.addBehavior(self.bubblepicker.BPDynamics)
         self.bubblepicker.BPAnimator.addBehavior(self.bubblepicker.BPGravity)
         self.bubblepicker.BPAnimator.addBehavior(self.bubblepicker.BPCollision)

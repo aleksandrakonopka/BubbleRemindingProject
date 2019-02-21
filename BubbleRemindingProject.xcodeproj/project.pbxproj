@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F18D8CC221ECE3E00A8C1BF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F18D8CB221ECE3D00A8C1BF /* gradient.png */; };
+		6F18D8CE221ECF1600A8C1BF /* gradient2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F18D8CD221ECF1600A8C1BF /* gradient2.jpg */; };
 		6F822B29221B336200158C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B28221B336200158C9D /* AppDelegate.swift */; };
 		6F822B33221B336A00158C9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F822B31221B336A00158C9D /* LaunchScreen.storyboard */; };
 		6F822B4D221B363B00158C9D /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B47221B363B00158C9D /* AddItemViewController.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F18D8CB221ECE3D00A8C1BF /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gradient.png; path = ../../../gradient.png; sourceTree = "<group>"; };
+		6F18D8CD221ECF1600A8C1BF /* gradient2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = gradient2.jpg; path = ../../../gradient2.jpg; sourceTree = "<group>"; };
 		6F822B25221B336200158C9D /* BubbleRemindingProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleRemindingProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F822B28221B336200158C9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F822B32221B336A00158C9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 			children = (
 				6F822B63221B419900158C9D /* BubblePicker.swift */,
 				6F822B65221B419900158C9D /* BubblePickerNode.swift */,
+				6F18D8CD221ECF1600A8C1BF /* gradient2.jpg */,
+				6F18D8CB221ECE3D00A8C1BF /* gradient.png */,
 				6F822B64221B419900158C9D /* ipad.jpg */,
 			);
 			path = Bubbles;
@@ -184,9 +190,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F18D8CE221ECF1600A8C1BF /* gradient2.jpg in Resources */,
 				6F822B33221B336A00158C9D /* LaunchScreen.storyboard in Resources */,
 				6F822B67221B419900158C9D /* ipad.jpg in Resources */,
 				6F822B5C221B385300158C9D /* Assets.xcassets in Resources */,
+				6F18D8CC221ECE3E00A8C1BF /* gradient.png in Resources */,
 				6F822B54221B365700158C9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
