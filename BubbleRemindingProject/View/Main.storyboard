@@ -18,11 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yj-kI-Qom" customClass="BubblePicker" customModule="BubbleRemindingProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name: -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmp-gt-Yd1">
                                 <rect key="frame" x="16" y="48" width="327" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,12 +62,43 @@
                                     <action selector="addItemButtonPressed:" destination="opb-TO-D1N" eventType="touchUpInside" id="dno-XC-YPk"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yj-kI-Qom" customClass="BubblePicker" customModule="BubbleRemindingProject" customModuleProvider="target">
+                                <rect key="frame" x="-83" y="179" width="375" height="492"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tME-56-jPK">
+                                <rect key="frame" x="202" y="121" width="167" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-6w-9mq">
+                                        <rect key="frame" x="88" y="2" width="58" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="deleteBubblePressed:" destination="opb-TO-D1N" eventType="touchUpInside" id="GbM-hM-r2J"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaU-1M-Uqo">
+                                        <rect key="frame" x="-7" y="2" width="87" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Edit"/>
+                                        <connections>
+                                            <action selector="editBubblePressed:" destination="opb-TO-D1N" eventType="touchUpInside" id="YL7-ew-Y4P"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="igx-Vr-e35"/>
                     </view>
                     <connections>
                         <outlet property="bubblePicker" destination="5yj-kI-Qom" id="cUc-nC-Cfa"/>
+                        <outlet property="deleteBubble" destination="cpR-6w-9mq" id="OfU-HA-U6e"/>
+                        <outlet property="editBubble" destination="BaU-1M-Uqo" id="LKi-4J-bUW"/>
+                        <outlet property="editDeleteView" destination="tME-56-jPK" id="b8n-B6-d1h"/>
                         <outlet property="selectedDateLabel" destination="LDq-RE-O3S" id="2ex-IV-tlG"/>
                         <outlet property="selectedNameLabel" destination="jmp-gt-Yd1" id="XG0-Ro-YUI"/>
                         <outlet property="selectedPlaceLabel" destination="U7G-gs-ZET" id="0Xp-LE-YiS"/>
@@ -82,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD1-ha-kUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1095.2" y="-779.46026986506752"/>
+            <point key="canvasLocation" x="-1408.8" y="-778.56071964017997"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6sr-Fe-sp2">

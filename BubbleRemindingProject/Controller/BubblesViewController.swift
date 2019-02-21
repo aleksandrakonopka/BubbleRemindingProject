@@ -15,12 +15,21 @@ protocol SendBackMyListOfItemsFromBubblesToView
 
 class BubblesViewController: UIViewController {
     
+    
+    @IBOutlet var editDeleteView: UIView!
+    
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
+    
+    @IBOutlet var deleteBubble: UIButton!
+    @IBOutlet var editBubble: UIButton!
+    
     @IBOutlet var selectedNameLabel: UILabel!
     @IBOutlet var selectedPlaceLabel: UILabel!
     @IBOutlet var selectedDateLabel: UILabel!
     @IBOutlet var selectedPriorityLabel: UILabel!
     
     
+
     var selectedBubbleIndex : Int!
     var selectedBubbleName : String!
     var selectedBubblePlace : String!
@@ -35,6 +44,7 @@ class BubblesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bubblePicker.delegate = self
+        editDeleteView.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -78,6 +88,7 @@ class BubblesViewController: UIViewController {
         }
         
         func bubblePicker(_: BubblePicker, didSelectNodeAt indexPath: IndexPath) {
+            editDeleteView.isHidden = false
             // dodac godzine i minuty
             var dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
@@ -99,6 +110,7 @@ class BubblesViewController: UIViewController {
         }
         
         func bubblePicker(_: BubblePicker, didDeselectNodeAt indexPath: IndexPath) {
+            editDeleteView.isHidden = true
             setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
             return
         }
@@ -106,7 +118,7 @@ class BubblesViewController: UIViewController {
         func addItem(){
             //self.items.append("test")
             //bubblePicker.reloadDataAdded()
-            bubblePicker.deleteAll()
+            bubblePicker.deleteAll(howMuch:items.count-1)
             bubblePicker.loadData()
         }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -125,7 +137,37 @@ class BubblesViewController: UIViewController {
             selectedDateLabel.text = "Date: \(date)"
             selectedPriorityLabel.text = "Priority: \(priority)"
         }
-    }
+        @IBAction func editBubblePressed(_ sender: UIButton) {
+            
+        }
+        
+        @IBAction func deleteBubblePressed(_ sender: UIButton) {
+          for i in 0...items.count
+          {
+            if i == selectedBubbleIndex
+            {
+                items.remove(at: i)
+            }
+          }
+        bubblePicker.deleteAll(howMuch:items.count+1)
+        bubblePicker.loadData()
+        saveItemToPlist()
+        editDeleteView.isHidden = true
+        setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+        
+      }
+        func saveItemToPlist()
+        {
+            let encoder = PropertyListEncoder()
+            do {
+                let data = try encoder.encode(self.items)
+                try data.write(to:self.dataFilePath!)
+            }
+            catch {
+                print("Error encoding item array \(error)")
+            }
+        }
+}
 extension BubblesViewController: SendBackMyListOfItems
 {
     func toDoListArrayReceived(listOfItems: [ToDoItem]) {

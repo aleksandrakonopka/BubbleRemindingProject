@@ -152,7 +152,7 @@ public class BubblePicker: UIView {
 //    {
 //        nodes[indexPath.row].bubbleSize = 200
 //    }
-    public func deleteAll()
+    public func deleteAll(howMuch: Int)
     {
         guard let delegate = delegate else {
             return
@@ -162,7 +162,7 @@ public class BubblePicker: UIView {
         //        let node = delegate.bubblePicker(self, nodeFor: IndexPath(item: 0, section: 0))
         //        node.index = 0
         //        node.bubblepicker = self
-        for _ in 0..<items-1
+        for _ in 0..<howMuch
         {
             BPGravity.removeItem(nodes[0])
             BPDynamics.removeItem(nodes[0])
@@ -176,7 +176,7 @@ public class BubblePicker: UIView {
         }
         
     }
-    
+
     @objc func panned(recogniser: UIPanGestureRecognizer){
         var newX = gravPos.x + recogniser.translation(in: self).x;
         newX = max(0, newX);
