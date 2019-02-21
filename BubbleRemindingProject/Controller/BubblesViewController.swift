@@ -15,7 +15,7 @@ protocol SendBackMyListOfItemsFromBubblesToView
 
 class BubblesViewController: UIViewController {
     
-    
+    var isEditingBubble = false
     @IBOutlet var editDeleteView: UIView!
     
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
@@ -112,13 +112,21 @@ class BubblesViewController: UIViewController {
         func bubblePicker(_: BubblePicker, didDeselectNodeAt indexPath: IndexPath) {
             editDeleteView.isHidden = true
             setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+            editDeleteView.isHidden=true
             return
         }
         
         func addItem(){
             //self.items.append("test")
             //bubblePicker.reloadDataAdded()
-            bubblePicker.deleteAll(howMuch:items.count-1)
+            if ( isEditingBubble == true)
+            {
+                 bubblePicker.deleteAll(howMuch:items.count)
+            }
+            else{
+                print("Weszło to")
+               bubblePicker.deleteAll(howMuch:items.count-1)
+            }
             bubblePicker.loadData()
         }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,6 +136,10 @@ class BubblesViewController: UIViewController {
                 addVC.allMyItems = items
                 addVC.favouritePlaces = favouritePlaces
                 addVC.delegate = self
+                addVC.isEditingBubble = isEditingBubble
+                if selectedBubbleIndex != nil{
+                addVC.indexOfEditedBubble = selectedBubbleIndex
+                }
             }
         }
         func setSelectedLabels(name:String,place:String,date:String,priority:String)
@@ -138,7 +150,10 @@ class BubblesViewController: UIViewController {
             selectedPriorityLabel.text = "Priority: \(priority)"
         }
         @IBAction func editBubblePressed(_ sender: UIButton) {
-            
+            isEditingBubble = true
+            performSegue(withIdentifier: "goToAddFromBubbles", sender: self)
+            self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+            //isEditingBubble = false
         }
         
         @IBAction func deleteBubblePressed(_ sender: UIButton) {
@@ -161,6 +176,7 @@ class BubblesViewController: UIViewController {
             self.saveItemToPlist()
             self.editDeleteView.isHidden = true
             self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+                
             }
             alert.addAction(cancel)
             alert.addAction(yes)
@@ -184,7 +200,8 @@ extension BubblesViewController: SendBackMyListOfItems
     func toDoListArrayReceived(listOfItems: [ToDoItem]) {
         items = listOfItems
         addItem()
-        print("weszlo")
+        print("IS EDITING BUBBLE \(isEditingBubble)")
+        isEditingBubble=false
         }
 }
     /*

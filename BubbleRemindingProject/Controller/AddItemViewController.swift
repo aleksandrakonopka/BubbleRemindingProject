@@ -20,6 +20,8 @@ protocol SendBackMyListOfItemsToTable
 
 class AddItemViewController: UIViewController {
     
+    var isEditingBubble = false
+    var indexOfEditedBubble: Int!
     var favouritePlaces = [FavouritePlace]()
     var selectedRow : IndexPath!
     @IBOutlet var myTable: UITableView!
@@ -39,8 +41,7 @@ class AddItemViewController: UIViewController {
     var chosenPriority:Priority!
     var chosenDate:Date!
     var chosenItemName:String!
-    var chosenPlaceName = "Noname"
-    
+    var chosenPlaceName:String!
     @IBOutlet var youHaveChosenThisPlaceLabel: UILabel!
     @IBOutlet var chosenPriorityLabel: UILabel!
     
@@ -57,9 +58,22 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(isEditingBubble==true)
+        {
+            itemTextField.text = allMyItems[indexOfEditedBubble].item
+            itemDataPicker.date = allMyItems[indexOfEditedBubble].date
+            chosenPriority = allMyItems[indexOfEditedBubble].priority
+            chosenPlaceName = allMyItems[indexOfEditedBubble].placeName
+            youHaveChosenThisPlaceLabel.text = allMyItems[indexOfEditedBubble].placeName
+            chosenPriorityLabel.text = allMyItems[indexOfEditedBubble].priority.rawValue
+        }
         print("hello")
         //chosenPlaceName = "Noname"
+        if(isEditing == false)
+        {
         chosenPriority = Priority.Low
+        chosenPlaceName = "Noname"
+        }
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
         //animateIn(thisSubview:addPlaceNameView)
@@ -135,6 +149,7 @@ class AddItemViewController: UIViewController {
             activeSubview = nil
             youHaveChosenThisPlaceLabel.text = "No place is chosen"
             saveItemToArray()
+            isEditingBubble=false
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -147,6 +162,7 @@ class AddItemViewController: UIViewController {
         {
             myTable.deselectRow(at: selectedRow, animated: true)
         }
+        isEditingBubble=false
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -180,8 +196,21 @@ class AddItemViewController: UIViewController {
     func saveItemToArray()
     {
         let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)
+        if (isEditingBubble==false)
+        {
         allMyItems.append(newItem)
-        delegate?.toDoListArrayReceived(listOfItems:allMyItems)
+        }
+       else
+        {
+            for i in 0...allMyItems.count-1
+            {
+                if(indexOfEditedBubble == i)
+                {
+                    allMyItems[i] = newItem
+                }
+            }
+        }
+            delegate?.toDoListArrayReceived(listOfItems:allMyItems)
         tabledelegate?.toDoListArrayReceived(listOfItems: allMyItems)
         saveItemToPlist()
     }
