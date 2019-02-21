@@ -57,6 +57,7 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("hello")
         //chosenPlaceName = "Noname"
         chosenPriority = Priority.Low
         activeSubview = addItemView
