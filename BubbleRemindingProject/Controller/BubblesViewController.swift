@@ -89,7 +89,6 @@ class BubblesViewController: UIViewController {
         
         func bubblePicker(_: BubblePicker, didSelectNodeAt indexPath: IndexPath) {
             editDeleteView.isHidden = false
-            // dodac godzine i minuty
             var dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
             
@@ -100,19 +99,24 @@ class BubblesViewController: UIViewController {
              selectedBubblePriority = items[indexPath.row].priority
             
          setSelectedLabels(name:selectedBubbleName,place:selectedBubblePlace,date:dateFormatter.string(from:selectedBubbleDate),priority:selectedBubblePriority.rawValue)
-           // addItem()
-//            if items[indexPath.row].item == "dupa"
-//            {
-//                addItem()
-//                //bubblePicker.changeNodeSize(indexPath: indexPath)
-//            }
         
         }
         
         func bubblePicker(_: BubblePicker, didDeselectNodeAt indexPath: IndexPath) {
-            editDeleteView.isHidden = true
-            setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
-            editDeleteView.isHidden=true
+//            editDeleteView.isHidden = true
+//            setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+//            editDeleteView.isHidden=true
+            editDeleteView.isHidden = false
+            var dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+            
+            selectedBubbleIndex = indexPath.row
+            selectedBubbleName = items[indexPath.row].item
+            selectedBubblePlace = items[indexPath.row].placeName
+            selectedBubbleDate = items[indexPath.row].date
+            selectedBubblePriority = items[indexPath.row].priority
+            
+            setSelectedLabels(name:selectedBubbleName,place:selectedBubblePlace,date:dateFormatter.string(from:selectedBubbleDate),priority:selectedBubblePriority.rawValue)
             return
         }
         
@@ -153,6 +157,7 @@ class BubblesViewController: UIViewController {
             isEditingBubble = true
             performSegue(withIdentifier: "goToAddFromBubbles", sender: self)
             self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+            editDeleteView.isHidden = true
             //isEditingBubble = false
         }
         
