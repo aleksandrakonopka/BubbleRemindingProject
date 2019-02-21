@@ -14,6 +14,19 @@ protocol SendBackMyListOfItemsFromBubblesToView
 }
 
 class BubblesViewController: UIViewController {
+    
+    @IBOutlet var selectedNameLabel: UILabel!
+    @IBOutlet var selectedPlaceLabel: UILabel!
+    @IBOutlet var selectedDateLabel: UILabel!
+    @IBOutlet var selectedPriorityLabel: UILabel!
+    
+    
+    var selectedBubbleIndex : Int!
+    var selectedBubbleName : String!
+    var selectedBubblePlace : String!
+    var selectedBubbleDate: Date!
+    var selectedBubblePriority: Priority!
+    
     var delegate : SendBackMyListOfItemsFromBubblesToView?
     var favouritePlaces = [FavouritePlace]()
     @IBOutlet weak var bubblePicker: BubblePicker!
@@ -65,6 +78,13 @@ class BubblesViewController: UIViewController {
         }
         
         func bubblePicker(_: BubblePicker, didSelectNodeAt indexPath: IndexPath) {
+             selectedBubbleIndex = indexPath.row
+             selectedBubbleName = items[indexPath.row].item
+             selectedBubblePlace = items[indexPath.row].placeName
+             selectedBubbleDate = items[indexPath.row].date
+             selectedBubblePriority = items[indexPath.row].priority
+            
+         setSelectedLabels(name:selectedBubbleName,place:selectedBubblePlace,date:selectedBubbleDate,priority:selectedBubblePriority)
            // addItem()
 //            if items[indexPath.row].item == "dupa"
 //            {
@@ -92,6 +112,15 @@ class BubblesViewController: UIViewController {
                 addVC.favouritePlaces = favouritePlaces
                 addVC.delegate = self
             }
+        }
+        func setSelectedLabels(name:String,place:String,date:Date,priority:Priority)
+        {
+            var dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy" // dodac godzine i minuty
+            selectedNameLabel.text = "Name: \(name)"
+            selectedPlaceLabel.text = "Place:  \(place)"
+            selectedDateLabel.text = "Date: \(dateFormatter.string(from:date))"
+            selectedPriorityLabel.text = "Priority: \(priority.rawValue)"
         }
     }
 extension BubblesViewController: SendBackMyListOfItems
