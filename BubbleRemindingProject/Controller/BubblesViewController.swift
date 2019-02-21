@@ -142,18 +142,29 @@ class BubblesViewController: UIViewController {
         }
         
         @IBAction func deleteBubblePressed(_ sender: UIButton) {
-          for i in 0...items.count
+        let alert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete this item? \(selectedBubbleName!)", preferredStyle: .alert )
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel){
+                action in
+            }
+            let yes = UIAlertAction(title: "Yes", style: .default){
+                action in
+            
+          for i in 0...self.items.count
           {
-            if i == selectedBubbleIndex
+            if i == self.selectedBubbleIndex
             {
-                items.remove(at: i)
+                self.items.remove(at: i)
             }
           }
-        bubblePicker.deleteAll(howMuch:items.count+1)
-        bubblePicker.loadData()
-        saveItemToPlist()
-        editDeleteView.isHidden = true
-        setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+            self.bubblePicker.deleteAll(howMuch:self.items.count+1)
+            self.bubblePicker.loadData()
+            self.saveItemToPlist()
+            self.editDeleteView.isHidden = true
+            self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+            }
+            alert.addAction(cancel)
+            alert.addAction(yes)
+            self.present(alert,animated: true, completion: nil)
         
       }
         func saveItemToPlist()
