@@ -107,6 +107,7 @@ class BubblesViewController: UIViewController {
 //            setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
 //            editDeleteView.isHidden=true
             editDeleteView.isHidden = false
+            view.bringSubviewToFront(editDeleteView)
             var dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
 
