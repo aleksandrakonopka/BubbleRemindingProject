@@ -69,7 +69,7 @@ class AddItemViewController: UIViewController {
         }
         print("hello")
         //chosenPlaceName = "Noname"
-        if(isEditing == false)
+        if(isEditing == false && segueFromTable==false)
         {
         chosenPriority = Priority.Low
         chosenPlaceName = "Noname"
