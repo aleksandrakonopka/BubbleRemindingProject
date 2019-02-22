@@ -64,8 +64,8 @@ class AddItemViewController: UIViewController {
             itemDataPicker.date = allMyItems[indexOfEditedBubble].date
             chosenPriority = allMyItems[indexOfEditedBubble].priority
             chosenPlaceName = allMyItems[indexOfEditedBubble].placeName
-            youHaveChosenThisPlaceLabel.text = allMyItems[indexOfEditedBubble].placeName
-            chosenPriorityLabel.text = allMyItems[indexOfEditedBubble].priority.rawValue
+            youHaveChosenThisPlaceLabel.text = "You have chosen \(allMyItems[indexOfEditedBubble].placeName)"
+            chosenPriorityLabel.text = "Chosen priority: \(allMyItems[indexOfEditedBubble].priority.rawValue)"
         }
         print("hello")
         //chosenPlaceName = "Noname"
