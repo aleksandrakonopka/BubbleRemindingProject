@@ -59,35 +59,36 @@ class ToDoTableViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func addButtonClicked(_ sender: UIButton) {
-        let alert = UIAlertController(title: "New ToDoItem", message: "Enter new toDoItem", preferredStyle: .alert )
-        alert.addTextField{textfield in}
-        
-        let ok = UIAlertAction(title: "OK", style: .default){ action in
-            if let textfield = alert.textFields?.first{
-                print(textfield.text!)
-                let newItem = ToDoItem(placeName: self.placeId, item: textfield.text!, priority: Priority.Low,date: Date())
-                print(newItem)
-                if (self.array?.append(newItem)) == nil {
-                    self.array = [newItem]
-                }
-                if (self.arrayInPlace?.append(newItem)) == nil {
-                    self.arrayInPlace = [newItem]
-                }
-                print("NOWY ITEM:\(newItem)")
-                print(self.array!)
-                self.myTable.reloadData()
-                self.saveToPlist()
-                
-                }
-            }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel){
-            action in
-        }
-        alert.addAction(ok)
-        alert.addAction(cancel)
-        self.present(alert,animated: true, completion: nil)
-    }
+    
+//    @IBAction func addButtonClicked(_ sender: UIButton) {
+//        let alert = UIAlertController(title: "New ToDoItem", message: "Enter new toDoItem", preferredStyle: .alert )
+//        alert.addTextField{textfield in}
+//
+//        let ok = UIAlertAction(title: "OK", style: .default){ action in
+//            if let textfield = alert.textFields?.first{
+//                print(textfield.text!)
+//                let newItem = ToDoItem(placeName: self.placeId, item: textfield.text!, priority: Priority.Low,date: Date())
+//                print(newItem)
+//                if (self.array?.append(newItem)) == nil {
+//                    self.array = [newItem]
+//                }
+//                if (self.arrayInPlace?.append(newItem)) == nil {
+//                    self.arrayInPlace = [newItem]
+//                }
+//                print("NOWY ITEM:\(newItem)")
+//                print(self.array!)
+//                self.myTable.reloadData()
+//                self.saveToPlist()
+//
+//                }
+//            }
+//        let cancel = UIAlertAction(title: "Cancel", style: .cancel){
+//            action in
+//        }
+//        alert.addAction(ok)
+//        alert.addAction(cancel)
+//        self.present(alert,animated: true, completion: nil)
+//    }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
