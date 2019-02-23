@@ -89,6 +89,7 @@ class BubblesViewController: UIViewController {
         
         func bubblePicker(_: BubblePicker, didSelectNodeAt indexPath: IndexPath) {
             editDeleteView.isHidden = false
+            view.bringSubviewToFront(editDeleteView)
             var dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
             

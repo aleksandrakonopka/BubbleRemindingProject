@@ -15,20 +15,20 @@
             <objects>
                 <viewController id="opb-TO-D1N" customClass="BubblesViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lc8-09-AaK">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tME-56-jPK">
-                                <rect key="frame" x="0.0" y="246.5" width="1024" height="369"/>
+                                <rect key="frame" x="0.0" y="103" width="375" height="135"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSJ-t5-DDC">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="369"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tLh-jW-8B2">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="369"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpR-6w-9mq">
-                                                    <rect key="frame" x="830" y="329" width="87" height="30"/>
+                                                    <rect key="frame" x="181" y="95" width="87" height="30"/>
                                                     <color key="backgroundColor" red="1" green="0.31605869780000001" blue="0.33570003240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="87" id="eC1-F2-WA2"/>
@@ -41,7 +41,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaU-1M-Uqo">
-                                                    <rect key="frame" x="927" y="329" width="87" height="30"/>
+                                                    <rect key="frame" x="278" y="95" width="87" height="30"/>
                                                     <color key="backgroundColor" red="0.81758459250000004" green="0.88689328840000003" blue="0.98664540050000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="GQl-KJ-CO4"/>
@@ -121,7 +121,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aiD-rO-KIp">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="226.5"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="83"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRY-k3-fRY">
                                         <rect key="frame" x="20" y="20" width="100" height="45"/>
@@ -137,7 +137,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoB-DF-0CZ">
-                                        <rect key="frame" x="904" y="20" width="100" height="45"/>
+                                        <rect key="frame" x="255" y="20" width="100" height="45"/>
                                         <color key="backgroundColor" red="0.33019959100000001" green="0.78610802660000001" blue="0.65860520259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Vkj-KI-RTL"/>

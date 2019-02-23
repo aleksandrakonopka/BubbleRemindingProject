@@ -127,25 +127,26 @@ public class BubblePickerNode: UIView {
             self.label.frame = self.bounds
             self.label.font = self.selectedFont;
             
-//            prevNode2 = self
-//            //zmnijszam 1
-//            if (prevNode1 != nil) {
-//            prevNode1!.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: bubbleSize, height: bubbleSize))
-//
-//            maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: prevNode1!.bounds.width - 6, height: prevNode1!.bounds.height - 6), cornerRadius: 1000)
-//
-//            prevNode1!.imageView.frame = CGRect(x: 0, y: 0, width: pickedBubbleTimesSize * bubbleSize, height: pickedBubbleTimesSize * bubbleSize);
-//            prevNode1!.imageView.alpha = 0;
-//
-//            prevNode1!.label.frame = prevNode1!.bounds
-//            prevNode1!.label.font = prevNode1!.font
-//            }
-//            else{
-//                            maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: bounds.width - 6, height: bounds.height - 6), cornerRadius: 1000)
-//
-//            }
-//            // 1=2
-//        prevNode1 = prevNode2
+            prevNode2 = self
+            //zmnijszam 1
+            if (prevNode1 != nil && prevNode1 != self) {
+            prevNode1!.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: bubbleSize, height: bubbleSize))
+
+            maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: prevNode1!.bounds.width - 6, height: prevNode1!.bounds.height - 6), cornerRadius: 1000)
+
+            prevNode1!.imageView.frame = CGRect(x: 0, y: 0, width: pickedBubbleTimesSize * bubbleSize, height: pickedBubbleTimesSize * bubbleSize);//ok
+            prevNode1!.imageView.alpha = 0;//ok
+            prevNode1!.label.frame = prevNode1!.bounds //ok
+            prevNode1!.label.font = prevNode1!.font //ok
+            prevNode1!.isExpanded = false
+            prevNode1?.backgroundColor = UIColor.gray
+            }
+            else{
+                            maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: bounds.width - 6, height: bounds.height - 6), cornerRadius: 1000)
+
+            }
+            // 1=2
+        prevNode1 = prevNode2
         }
 
         let maskLayer = CAShapeLayer()
@@ -159,5 +160,5 @@ public class BubblePickerNode: UIView {
     }
     
 }
-//private var prevNode1 : BubblePickerNode?
-//private var prevNode2 : BubblePickerNode?
+private var prevNode1 :BubblePickerNode?
+private var prevNode2 : BubblePickerNode?
