@@ -64,10 +64,30 @@ class BubblesViewController: UIViewController {
         func bubblePicker(_: BubblePicker, nodeFor indexPath: IndexPath) -> BubblePickerNode {
             
             var chosenSize: CGFloat = 100.0
-            if items[indexPath.row].item == "jajko"
+            print("Czas \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970))")
+            //mniejsze niz dzien
+            if(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970 < 86386.805)
             {
-                chosenSize = 50.0
+                print("Item: \(items[indexPath.row].item) Liczba: \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970)")
+                chosenSize = 130.0
+                print("weszło 130")
             }
+            //mniejsze niz tydzien
+             if(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970 < 604760.39 && items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970 >= 86386.805 )
+            {
+                print("Item: \(items[indexPath.row].item) Liczba: \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970)")
+                chosenSize = 100.0
+                print("weszlo 100")
+            }
+                //wieksze niz tydzien
+             if(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970 >= 604760.39)
+            {
+                print("Item: \(items[indexPath.row].item) Liczba: \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970)")
+                chosenSize = 80.0
+                print("weszlo 80")
+            }
+
+            print("Size: \(chosenSize)")
             let node = BubblePickerNode(title: items[indexPath.row].item, color: UIColor.purple, image: UIImage(named: "gradient2.jpg")!, size: chosenSize, pickedTimesSize: 1.2)
             
             if items[indexPath.row].priority == Priority.Low
