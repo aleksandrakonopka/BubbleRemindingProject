@@ -104,21 +104,21 @@ class BubblesViewController: UIViewController {
         }
         
         func bubblePicker(_: BubblePicker, didDeselectNodeAt indexPath: IndexPath) {
-//            editDeleteView.isHidden = true
-//            setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
-//            editDeleteView.isHidden=true
-            editDeleteView.isHidden = false
-            view.bringSubviewToFront(editDeleteView)
-            var dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
-
-            selectedBubbleIndex = indexPath.row
-            selectedBubbleName = items[indexPath.row].item
-            selectedBubblePlace = items[indexPath.row].placeName
-            selectedBubbleDate = items[indexPath.row].date
-            selectedBubblePriority = items[indexPath.row].priority
-
-            setSelectedLabels(name:selectedBubbleName,place:selectedBubblePlace,date:dateFormatter.string(from:selectedBubbleDate),priority:selectedBubblePriority.rawValue)
+            editDeleteView.isHidden = true
+            setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+            editDeleteView.isHidden=true
+//            editDeleteView.isHidden = false
+//            view.bringSubviewToFront(editDeleteView)
+//            var dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+//
+//            selectedBubbleIndex = indexPath.row
+//            selectedBubbleName = items[indexPath.row].item
+//            selectedBubblePlace = items[indexPath.row].placeName
+//            selectedBubbleDate = items[indexPath.row].date
+//            selectedBubblePriority = items[indexPath.row].priority
+//
+//            setSelectedLabels(name:selectedBubbleName,place:selectedBubblePlace,date:dateFormatter.string(from:selectedBubbleDate),priority:selectedBubblePriority.rawValue)
             return
         }
         
