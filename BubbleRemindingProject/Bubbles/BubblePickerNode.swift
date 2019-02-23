@@ -15,6 +15,8 @@ public class BubblePickerNode: UIView {
     public var textColor: UIColor = UIColor.white
     public var bubbleSize = CGFloat()
     public var pickedBubbleTimesSize = CGFloat()
+    var backBackgroundColor: UIColor?
+    var backTextColor: UIColor?
     
     var bubblepicker: BubblePicker!
     
@@ -104,7 +106,7 @@ public class BubblePickerNode: UIView {
 //od tąd
         if(!isExpanded){
             //Pomniejszanie
-//            self.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 100))
+            //od kom
              self.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: bubbleSize, height: bubbleSize))
 
             maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: bounds.width - 6, height: bounds.height - 6), cornerRadius: 1000)
@@ -114,11 +116,13 @@ public class BubblePickerNode: UIView {
 
             self.label.frame = self.bounds
             self.label.font = self.font
+            //do kom
         }
         else{
             //Powiekszanie
+            //od kom
             self.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: pickedBubbleTimesSize * bubbleSize, height: pickedBubbleTimesSize * bubbleSize))
-            
+
             imageView.frame = CGRect(x: 0, y: 0, width: pickedBubbleTimesSize * bubbleSize, height: pickedBubbleTimesSize * bubbleSize);
             imageView.alpha = 0.5;
 
@@ -126,10 +130,17 @@ public class BubblePickerNode: UIView {
 
             self.label.frame = self.bounds
             self.label.font = self.selectedFont;
+//do kom
+            backBackgroundColor = self.backgroundColor
+            backTextColor = self.textColor
+            
+            self.backgroundColor = UIColor.black
+            self.textColor = UIColor.white
             
             prevNode2 = self
             //zmnijszam 1
             if (prevNode1 != nil && prevNode1 != self) {
+                //od kom
             prevNode1!.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: bubbleSize, height: bubbleSize))
 
             maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: prevNode1!.bounds.width - 6, height: prevNode1!.bounds.height - 6), cornerRadius: 1000)
@@ -138,21 +149,27 @@ public class BubblePickerNode: UIView {
             prevNode1!.imageView.alpha = 0;//ok
             prevNode1!.label.frame = prevNode1!.bounds //ok
             prevNode1!.label.font = prevNode1!.font //ok
+                //do kom
             prevNode1!.isExpanded = false
-            prevNode1?.backgroundColor = UIColor.gray
+            
+            prevNode1!.backgroundColor = backBackgroundColor
+            prevNode1!.textColor = backTextColor!
+            
             }
             else{
+                //od kom
                             maskPath = UIBezierPath(roundedRect: CGRect(x: 3, y: 3, width: bounds.width - 6, height: bounds.height - 6), cornerRadius: 1000)
-
+//do kom
             }
             // 1=2
         prevNode1 = prevNode2
         }
-
+        //od kom
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds
         maskLayer.path = maskPath.cgPath
         self.layer.mask = maskLayer
+        // do kom
      //do tąd
         self.bubblepicker.BPAnimator.addBehavior(self.bubblepicker.BPDynamics)
         self.bubblepicker.BPAnimator.addBehavior(self.bubblepicker.BPGravity)
