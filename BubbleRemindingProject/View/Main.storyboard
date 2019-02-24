@@ -36,6 +36,11 @@
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Delete"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="deleteBubblePressed:" destination="opb-TO-D1N" eventType="touchUpInside" id="GbM-hM-r2J"/>
                                                     </connections>
@@ -49,6 +54,11 @@
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Edit"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="editBubblePressed:" destination="opb-TO-D1N" eventType="touchUpInside" id="YL7-ew-Y4P"/>
                                                     </connections>
@@ -132,6 +142,11 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Wróć"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="opb-TO-D1N" eventType="touchUpInside" id="tT3-vR-Lej"/>
                                         </connections>
@@ -145,6 +160,11 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Add Item"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addItemButtonPressed:" destination="opb-TO-D1N" eventType="touchUpInside" id="dno-XC-YPk"/>
                                         </connections>
@@ -221,9 +241,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hua-TN-8qF">
+                                <rect key="frame" x="87" y="288" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.92984664440155029" green="0.28187742829322815" blue="0.30991783738136292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="icx-fK-e1R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Bubbles">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10000"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goToBubblesPressed:" destination="L71-h2-XVR" eventType="touchUpInside" id="Vbw-hm-0oZ"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVl-0Q-Shj">
-                                <rect key="frame" x="0.0" y="60" width="375" height="80"/>
-                                <color key="backgroundColor" red="0.95411032438278198" green="0.64578980207443237" blue="0.64215153455734253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="91" width="375" height="80"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="ygO-yz-mGQ"/>
                                 </constraints>
@@ -237,8 +276,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xf-tc-XPS">
-                                <rect key="frame" x="0.0" y="140" width="375" height="80"/>
-                                <color key="backgroundColor" red="0.8175845925354267" green="0.88689328840963133" blue="0.98664540050000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="171" width="375" height="80"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Td0-yY-HJR"/>
                                 </constraints>
@@ -250,31 +289,17 @@
                                     <segue destination="NrS-MC-fac" kind="show" identifier="goToFavourites" id="Cpc-lP-nTK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hua-TN-8qF">
-                                <rect key="frame" x="0.0" y="220" width="375" height="80"/>
-                                <color key="backgroundColor" red="0.98642092940000003" green="0.98723179100000003" blue="0.86726200580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="icx-fK-e1R"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Bubbles">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="goToBubblesPressed:" destination="L71-h2-XVR" eventType="touchUpInside" id="Vbw-hm-0oZ"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.87553614377975464" green="0.94267982244491577" blue="0.81775599718093872" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hua-TN-8qF" firstAttribute="leading" secondItem="8XZ-6t-dUa" secondAttribute="leading" id="1su-Iq-phF"/>
-                            <constraint firstItem="BVl-0Q-Shj" firstAttribute="top" secondItem="8XZ-6t-dUa" secondAttribute="top" constant="40" id="2gN-uk-iDX"/>
-                            <constraint firstItem="hua-TN-8qF" firstAttribute="top" secondItem="2Xf-tc-XPS" secondAttribute="bottom" id="3Hf-GD-zEl"/>
+                            <constraint firstItem="hua-TN-8qF" firstAttribute="leading" secondItem="8XZ-6t-dUa" secondAttribute="leading" constant="87" id="1su-Iq-phF"/>
+                            <constraint firstItem="BVl-0Q-Shj" firstAttribute="top" secondItem="8XZ-6t-dUa" secondAttribute="top" constant="71" id="2gN-uk-iDX"/>
+                            <constraint firstItem="hua-TN-8qF" firstAttribute="top" secondItem="2Xf-tc-XPS" secondAttribute="bottom" constant="37" id="3Hf-GD-zEl"/>
                             <constraint firstItem="BVl-0Q-Shj" firstAttribute="trailing" secondItem="8XZ-6t-dUa" secondAttribute="trailing" id="3nh-Ay-JgM"/>
                             <constraint firstItem="yB5-jw-sia" firstAttribute="trailing" secondItem="8XZ-6t-dUa" secondAttribute="trailing" id="89j-vB-Ffw"/>
                             <constraint firstItem="BVl-0Q-Shj" firstAttribute="leading" secondItem="8XZ-6t-dUa" secondAttribute="leading" id="DR3-4r-pPo"/>
                             <constraint firstItem="ucQ-n4-iDD" firstAttribute="leading" secondItem="8XZ-6t-dUa" secondAttribute="leading" id="Mkn-B0-O5s"/>
-                            <constraint firstItem="hua-TN-8qF" firstAttribute="trailing" secondItem="8XZ-6t-dUa" secondAttribute="trailing" id="QBd-VH-Thb"/>
+                            <constraint firstItem="hua-TN-8qF" firstAttribute="trailing" secondItem="8XZ-6t-dUa" secondAttribute="trailing" constant="-88" id="QBd-VH-Thb"/>
                             <constraint firstItem="yB5-jw-sia" firstAttribute="leading" secondItem="8XZ-6t-dUa" secondAttribute="leading" id="W0C-I1-cBm"/>
                             <constraint firstItem="ucQ-n4-iDD" firstAttribute="top" secondItem="yB5-jw-sia" secondAttribute="bottom" id="daL-Wh-pUx"/>
                             <constraint firstItem="2Xf-tc-XPS" firstAttribute="trailing" secondItem="8XZ-6t-dUa" secondAttribute="trailing" id="dbZ-Jb-UMT"/>
@@ -339,6 +364,11 @@
                                         <state key="normal" title="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="NrS-MC-fac" eventType="touchUpInside" id="fyt-Wh-fQW"/>
                                         </connections>
@@ -412,6 +442,11 @@
                                         <state key="normal" title="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="backButtonClicked:" destination="H4R-kr-ahw" eventType="touchUpInside" id="PVq-AT-yQE"/>
                                         </connections>
@@ -426,6 +461,11 @@
                                         <state key="normal" title="Add Item">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addItemButtonPressed:" destination="H4R-kr-ahw" eventType="touchUpInside" id="8Uz-Fd-QW7"/>
                                         </connections>
@@ -489,6 +529,11 @@
                                                 <state key="normal" title="Show Your Places!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="showButtonPressed:" destination="XXv-Wd-pGq" eventType="touchUpInside" id="SwG-2a-faI"/>
                                                 </connections>
@@ -503,6 +548,11 @@
                                                 <state key="normal" title="Save this place!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="saveButtonPressed:" destination="XXv-Wd-pGq" eventType="touchUpInside" id="0Ch-lE-Zt3"/>
                                                 </connections>
@@ -526,6 +576,11 @@
                                         <state key="normal" title="Add!">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addButtonPressed:" destination="XXv-Wd-pGq" eventType="touchUpInside" id="mXc-cF-WoX"/>
                                         </connections>
@@ -556,6 +611,11 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="XXv-Wd-pGq" eventType="touchUpInside" id="Eo8-ff-qoL"/>
                                         </connections>
@@ -570,6 +630,11 @@
                                         <state key="normal" title="Don't follow me!">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="zoomButtonClicked:" destination="XXv-Wd-pGq" eventType="touchUpInside" id="RBZ-1m-Z6v"/>
                                         </connections>
@@ -694,6 +759,14 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cordnerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="x3p-3K-4bM"/>
                             </connections>
@@ -706,6 +779,14 @@
                             <state key="normal" title="Choose No Place">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cordnerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="chooseNoNameButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="Ivb-PT-zGS"/>
                             </connections>
@@ -717,6 +798,14 @@
                             <state key="normal" title="Next">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cordnerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="972-Zw-g0f"/>
                             </connections>
@@ -758,6 +847,11 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="KDT-xT-yjw"/>
                             </connections>
@@ -770,6 +864,11 @@
                             <state key="normal" title="Next">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="m1I-kn-6OF"/>
                             </connections>
@@ -803,6 +902,11 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="KeZ-hJ-Vii"/>
                             </connections>
@@ -814,6 +918,11 @@
                             <state key="normal" title="Next">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="HOm-MZ-jIY"/>
                             </connections>
@@ -847,6 +956,11 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="1WL-99-zkI"/>
                             </connections>
@@ -858,6 +972,11 @@
                             <state key="normal" title="Save">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="nextButtonPressed:" destination="ioY-kz-pRj" eventType="touchUpInside" id="pSV-rl-LaR"/>
                             </connections>
@@ -869,6 +988,11 @@
                             <state key="normal" title="Medium">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="choosePriority:" destination="ioY-kz-pRj" eventType="touchUpInside" id="zym-sK-98N"/>
                             </connections>
@@ -880,6 +1004,11 @@
                             <state key="normal" title="High">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="choosePriority:" destination="ioY-kz-pRj" eventType="touchUpInside" id="bUV-O4-3n4"/>
                             </connections>
@@ -891,6 +1020,11 @@
                             <state key="normal" title="Low">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="choosePriority:" destination="ioY-kz-pRj" eventType="touchUpInside" id="lLK-zo-ytk"/>
                             </connections>
@@ -904,6 +1038,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hbm-UH-vr9"/>
+        <segue reference="rjh-7H-jB1"/>
     </inferredMetricsTieBreakers>
 </document>

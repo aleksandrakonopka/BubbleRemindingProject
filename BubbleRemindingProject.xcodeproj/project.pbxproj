@@ -24,6 +24,7 @@
 		6F822B66221B419900158C9D /* BubblePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B63221B419900158C9D /* BubblePicker.swift */; };
 		6F822B67221B419900158C9D /* ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F822B64221B419900158C9D /* ipad.jpg */; };
 		6F822B68221B419900158C9D /* BubblePickerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B65221B419900158C9D /* BubblePickerNode.swift */; };
+		6FC43E192222F0AE00F2F3DE /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC43E182222F0AE00F2F3DE /* Others.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		6F822B63221B419900158C9D /* BubblePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblePicker.swift; sourceTree = "<group>"; };
 		6F822B64221B419900158C9D /* ipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipad.jpg; sourceTree = "<group>"; };
 		6F822B65221B419900158C9D /* BubblePickerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblePickerNode.swift; sourceTree = "<group>"; };
+		6FC43E182222F0AE00F2F3DE /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		6F822B27221B336200158C9D /* BubbleRemindingProject */ = {
 			isa = PBXGroup;
 			children = (
+				6FC43E172222F08400F2F3DE /* Others */,
 				6F822B5B221B385200158C9D /* Assets.xcassets */,
 				6F822B3E221B33A500158C9D /* Model */,
 				6F822B3D221B339C00158C9D /* View */,
@@ -130,6 +133,14 @@
 				6F822B56221B366E00158C9D /* ToDoItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6FC43E172222F08400F2F3DE /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				6FC43E182222F0AE00F2F3DE /* Others.swift */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +225,7 @@
 				6F822B51221B363B00158C9D /* BubblesViewController.swift in Sources */,
 				6F822B58221B366E00158C9D /* ToDoItem.swift in Sources */,
 				6F822B66221B419900158C9D /* BubblePicker.swift in Sources */,
+				6FC43E192222F0AE00F2F3DE /* Others.swift in Sources */,
 				6F822B57221B366E00158C9D /* FavouritePlace.swift in Sources */,
 				6F822B68221B419900158C9D /* BubblePickerNode.swift in Sources */,
 				6F822B4E221B363B00158C9D /* FavouritesViewController.swift in Sources */,
