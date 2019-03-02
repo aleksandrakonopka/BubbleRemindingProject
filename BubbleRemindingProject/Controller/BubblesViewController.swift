@@ -173,29 +173,50 @@ class BubblesViewController: UIViewController {
         func addItem(){
             //self.items.append("test")
             //bubblePicker.reloadDataAdded()
-            if ( isEditingBubble == true)
+            
+            //Argumenty do delete all w zaleznosci od sytuacji:
+            
+            //1. Edycja z baniek items.count
+            //2. Edycja z chosen bubbles items.count
+            //3. Dodawanie z baniek iitems.count-1
+            //4. Dodawanie z chosen bubbles dla tego samego miejsca items.count-1
+            //5. Dodawanie z chosen bubbles dla roznych miejsc items.count
+            //6. Edycja w chosen bubbles items.count
+            //7. Edycja w chosen bubbles tak ze zmienia sie lokalizacja items.count + 1
+            
+            if isEditingBubble == true
             {
-                 bubblePicker.deleteAll(howMuch:items.count)
+                if chosenPlace != addedBubblePlace && fromMainVc == false
+                {
+                    print("MIEJSCE1")
+                    bubblePicker.deleteAll(howMuch:items.count+1)
+                }
+                else
+                {
+                    print("MIEJSCE2")
+                    bubblePicker.deleteAll(howMuch:items.count)
+                }
             }
             else{
-                if ( chosenPlace != addedBubblePlace )
+                if fromMainVc == true
                 {
-                    if (fromMainVc == false)
+                    print("MIEJSCE3")
+                    bubblePicker.deleteAll(howMuch:items.count-1)
+                }
+                else
+                {
+                    if chosenPlace != addedBubblePlace
                     {
-                    print("weszło 1")
-                    bubblePicker.deleteAll(howMuch:items.count)
+                        print("MIEJSCE4")
+                        bubblePicker.deleteAll(howMuch:items.count)
                     }
                     else
                     {
-                        print("weszło 3")
-                      bubblePicker.deleteAll(howMuch:items.count-1)
+                        print("MIEJSCE5")
+                        bubblePicker.deleteAll(howMuch:items.count-1)
                     }
-                    
                 }
-                else{
-                print("Weszło 2")
-                bubblePicker.deleteAll(howMuch:items.count-1)
-                }
+                
             }
             bubblePicker.loadData()
         }
