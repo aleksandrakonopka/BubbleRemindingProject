@@ -99,11 +99,18 @@ class BubblesViewController: UIViewController {
             
             var chosenSize: CGFloat = 100.0
             print("Czas \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970))")
+            let screenHeight = UIScreen.main.fixedCoordinateSpace.bounds.height
+            print("Wysokosc: \(screenHeight)")
+
             //mniejsze niz dzien
             if(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970 < 86386.805)
             {
                 print("Item: \(items[indexPath.row].item) Liczba: \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970)")
                 chosenSize = 130.0
+                if(screenHeight>1000)
+                {
+                    chosenSize = 200
+                }
                 print("weszło 130")
             }
             //mniejsze niz tydzien
@@ -111,6 +118,10 @@ class BubblesViewController: UIViewController {
             {
                 print("Item: \(items[indexPath.row].item) Liczba: \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970)")
                 chosenSize = 100.0
+                if(screenHeight>1000)
+                {
+                    chosenSize = 170
+                }
                 print("weszlo 100")
             }
                 //wieksze niz tydzien
@@ -118,6 +129,10 @@ class BubblesViewController: UIViewController {
             {
                 print("Item: \(items[indexPath.row].item) Liczba: \(items[indexPath.row].date.timeIntervalSince1970 - Date().timeIntervalSince1970)")
                 chosenSize = 80.0
+                if(screenHeight>1000)
+                {
+                    chosenSize = 150
+                }
                 print("weszlo 80")
             }
 
