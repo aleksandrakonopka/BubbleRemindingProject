@@ -128,17 +128,54 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("INDEX PATH: \(indexPath.row), ELEMENT ID: \(array![indexPath.row].name)")
         placeId = array![indexPath.row].name
-        performSegue(withIdentifier: "goToToDoList", sender: self)
+        performSegue(withIdentifier: "goToChosenBubbles", sender: self)
     
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToToDoList"
+//        if segue.identifier == "goToToDoList"
+//        {
+//            let toDoVC = segue.destination as! ToDoTableViewController
+//            toDoVC.placeId = placeId
+//            toDoVC.array = arrayToDoItem
+//         //   print("ARRAYTODOITEMS FAV \(arrayToDoItem!)")
+//            toDoVC.delegate = self
+//        }
+        if segue.identifier == "goToChosenBubbles"
         {
-            let toDoVC = segue.destination as! ToDoTableViewController
-            toDoVC.placeId = placeId
-            toDoVC.array = arrayToDoItem
-         //   print("ARRAYTODOITEMS FAV \(arrayToDoItem!)")
-            toDoVC.delegate = self
+            let bubbleVC = segue.destination as! BubblesViewController
+            bubbleVC.bubblesFromOnePlace = true
+            //bubbleVC.delegate = self
+            if ( arrayToDoItem != nil)
+            {
+                            let chosenItems = arrayToDoItem?.filter(){
+                                if $0.placeName == placeId{
+                                    return true
+                                }else{
+                                    return false
+                                }
+                            }
+                if chosenItems != nil
+                {
+                bubbleVC.items = chosenItems!
+                }
+                else
+                {
+                    bubbleVC.items = []
+                }
+            }
+            else
+            {
+                bubbleVC.items = []
+            }
+            if ( array != nil )
+            {
+                bubbleVC.favouritePlaces = array!
+            }
+            else
+            {
+                bubbleVC.favouritePlaces = []
+            }
+            
         }
     }
    func toDoListArrayReceived(data: [ToDoItem]){

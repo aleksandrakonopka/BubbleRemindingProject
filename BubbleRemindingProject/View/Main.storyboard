@@ -213,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD1-ha-kUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1408.8" y="-778.56071964017997"/>
+            <point key="canvasLocation" x="399" y="-924"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6sr-Fe-sp2">
@@ -314,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLh-Tm-yr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1093.5999999999999" y="114.69265367316342"/>
+            <point key="canvasLocation" x="-2121" y="142"/>
         </scene>
         <!--Favourites View Controller-->
         <scene sceneID="Ozu-Ov-28f">
@@ -392,111 +392,12 @@
                     </view>
                     <connections>
                         <outlet property="myTable" destination="y5A-YH-WDF" id="6vR-0q-N8D"/>
-                        <segue destination="H4R-kr-ahw" kind="presentation" identifier="goToToDoList" id="Ghd-ar-J3Q"/>
+                        <segue destination="opb-TO-D1N" kind="show" identifier="goToChosenBubbles" id="wBm-Pz-siH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJ4-9K-zSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1095.2" y="878.41079460269873"/>
-        </scene>
-        <!--To Do Table View Controller-->
-        <scene sceneID="lls-ae-Y86">
-            <objects>
-                <viewController id="H4R-kr-ahw" customClass="ToDoTableViewController" customModule="BubbleRemindingProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Aou-dd-8Wz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Oa-mX-aAf">
-                                <rect key="frame" x="0.0" y="103" width="375" height="564"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toDoCell" id="NgT-BC-Pys">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NgT-BC-Pys" id="Ubv-oq-Gxi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="H4R-kr-ahw" id="cED-sZ-xlu"/>
-                                    <outlet property="delegate" destination="H4R-kr-ahw" id="nIQ-3C-XKN"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWd-gq-6yq">
-                                <rect key="frame" x="0.0" y="20" width="375" height="83"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRm-gV-haV">
-                                        <rect key="frame" x="20" y="20" width="100" height="45"/>
-                                        <color key="backgroundColor" red="0.95411032438278198" green="0.64578980207443237" blue="0.64215153455734253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="b3e-8k-BOl"/>
-                                            <constraint firstAttribute="height" constant="45" id="oVU-8R-xr4"/>
-                                        </constraints>
-                                        <state key="normal" title="Back">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="backButtonClicked:" destination="H4R-kr-ahw" eventType="touchUpInside" id="PVq-AT-yQE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyk-cH-hGJ">
-                                        <rect key="frame" x="255" y="20" width="100" height="45"/>
-                                        <color key="backgroundColor" red="0.45270806289999999" green="1" blue="0.58345398199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="GsP-mf-Zmh"/>
-                                            <constraint firstAttribute="height" constant="45" id="gfT-ls-eaU"/>
-                                        </constraints>
-                                        <state key="normal" title="Add Item">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="addItemButtonPressed:" destination="H4R-kr-ahw" eventType="touchUpInside" id="8Uz-Fd-QW7"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wWd-gq-6yq" secondAttribute="height" multiplier="375:83" id="CdX-g8-ROH"/>
-                                    <constraint firstItem="lRm-gV-haV" firstAttribute="leading" secondItem="wWd-gq-6yq" secondAttribute="leading" constant="20" id="JBe-HB-Khr"/>
-                                    <constraint firstItem="tyk-cH-hGJ" firstAttribute="top" secondItem="wWd-gq-6yq" secondAttribute="top" constant="20" id="MO2-uh-jsH"/>
-                                    <constraint firstItem="lRm-gV-haV" firstAttribute="top" secondItem="wWd-gq-6yq" secondAttribute="top" constant="20" id="QWm-U8-I5v"/>
-                                    <constraint firstAttribute="trailing" secondItem="tyk-cH-hGJ" secondAttribute="trailing" constant="20" id="kEa-dN-xeI"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="8Oa-mX-aAf" firstAttribute="top" secondItem="wWd-gq-6yq" secondAttribute="bottom" id="3M5-fd-6Kj"/>
-                            <constraint firstItem="8Oa-mX-aAf" firstAttribute="leading" secondItem="EGn-e8-UZ2" secondAttribute="leading" id="C1u-gA-hhJ"/>
-                            <constraint firstItem="8Oa-mX-aAf" firstAttribute="bottom" secondItem="EGn-e8-UZ2" secondAttribute="bottom" id="GSV-yn-rIO"/>
-                            <constraint firstItem="wWd-gq-6yq" firstAttribute="trailing" secondItem="EGn-e8-UZ2" secondAttribute="trailing" id="Qmd-lc-aBh"/>
-                            <constraint firstItem="wWd-gq-6yq" firstAttribute="top" secondItem="Aou-dd-8Wz" secondAttribute="top" constant="20" id="dh4-t5-Qsa"/>
-                            <constraint firstItem="wWd-gq-6yq" firstAttribute="leading" secondItem="EGn-e8-UZ2" secondAttribute="leading" id="lqs-a4-k0z"/>
-                            <constraint firstItem="8Oa-mX-aAf" firstAttribute="trailing" secondItem="EGn-e8-UZ2" secondAttribute="trailing" id="yxZ-k1-IUg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="EGn-e8-UZ2"/>
-                    </view>
-                    <connections>
-                        <outlet property="myTable" destination="8Oa-mX-aAf" id="ORG-pM-iNo"/>
-                        <segue destination="ioY-kz-pRj" kind="presentation" identifier="goToAddFromTable" id="rjh-7H-jB1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rlw-Qx-ht8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-175.19999999999999" y="878.41079460269873"/>
+            <point key="canvasLocation" x="398" y="1074"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="rP9-lE-mEq">
@@ -667,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ow-8n-iSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-196" y="116.49175412293854"/>
+            <point key="canvasLocation" x="-612" y="168"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="VG4-A5-Pn1">
@@ -1034,6 +935,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rjh-7H-jB1"/>
+        <segue reference="wBm-Pz-siH"/>
     </inferredMetricsTieBreakers>
 </document>

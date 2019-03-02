@@ -15,6 +15,7 @@ protocol SendBackMyListOfItemsFromBubblesToView
 
 class BubblesViewController: UIViewController {
     
+    var bubblesFromOnePlace = false
     var isEditingBubble = false
     @IBOutlet var editDeleteView: UIView!
     
@@ -40,11 +41,21 @@ class BubblesViewController: UIViewController {
     var favouritePlaces = [FavouritePlace]()
     @IBOutlet weak var bubblePicker: BubblePicker!
     var items: [ToDoItem] = []
+    var chosenPlaceItems: [ToDoItem] = []
+    var shownItems: [ToDoItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bubblePicker.delegate = self
         editDeleteView.isHidden = true
+        if (bubblesFromOnePlace == false)
+        {
+            shownItems = items
+        }
+        else
+        {
+            shownItems = chosenPlaceItems
+        }
         // Do any additional setup after loading the view.
     }
 
