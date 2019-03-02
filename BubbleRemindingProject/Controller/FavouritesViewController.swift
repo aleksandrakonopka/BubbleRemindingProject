@@ -156,16 +156,16 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                             }
                 if chosenItems != nil
                 {
-                bubbleVC.items = chosenItems!
+                bubbleVC.chosenPlaceItems = chosenItems!
                 }
                 else
                 {
-                    bubbleVC.items = []
+                    bubbleVC.chosenPlaceItems = []
                 }
             }
             else
             {
-                bubbleVC.items = []
+                bubbleVC.chosenPlaceItems = []
             }
             if ( array != nil )
             {

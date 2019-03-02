@@ -42,20 +42,28 @@ class BubblesViewController: UIViewController {
     @IBOutlet weak var bubblePicker: BubblePicker!
     var items: [ToDoItem] = []
     var chosenPlaceItems: [ToDoItem] = []
-    var shownItems: [ToDoItem] = []
+    var allItems: [ToDoItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bubblePicker.delegate = self
         editDeleteView.isHidden = true
+        //od tad
         if (bubblesFromOnePlace == false)
         {
-            shownItems = items
+            items = allItems
         }
         else
         {
-            shownItems = chosenPlaceItems
+            items = chosenPlaceItems
         }
+//        print("All items: \(allItems)")
+//        print("Items: \(items)")
+//        print("Chosen Place Items: \(chosenPlaceItems)")
+//        print("Bubbles from one place: \(bubblesFromOnePlace) ")
+        bubblePicker.loadData()
+        //do tad
+        
         // Do any additional setup after loading the view.
     }
 

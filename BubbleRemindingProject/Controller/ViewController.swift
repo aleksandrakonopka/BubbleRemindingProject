@@ -89,11 +89,11 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             bubbleVC.delegate = self
             if ( arrayToDoItem != nil)
             {
-                bubbleVC.items = arrayToDoItem!
+                bubbleVC.allItems = arrayToDoItem!
             }
             else
             {
-               bubbleVC.items = []
+               bubbleVC.allItems = []
             }
             if ( tabFav != nil )
             {
