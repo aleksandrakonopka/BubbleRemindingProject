@@ -106,7 +106,7 @@ class AddItemViewController: UIViewController {
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
         //animateIn(thisSubview:addPlaceNameView)
-        //changeAppearance()
+        changeAppearance()
         //print("Favourite Places \(favouritePlaces)")
         // Do any additional setup after loading the view.
     }
@@ -213,15 +213,15 @@ class AddItemViewController: UIViewController {
         }
         print(chosenPriority)
     }
-//    func changeAppearance(){
-//        let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView]
-//        for chosenView in tabela
-//        {
-//        chosenView!.layer.cornerRadius = 10
-//        chosenView!.layer.borderWidth = 1
-//        chosenView!.layer.borderColor =  UIColor.black.cgColor
-//        }
-//    }
+    func changeAppearance(){
+        let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView]
+        for chosenView in tabela
+        {
+        chosenView!.layer.cornerRadius = 10
+        chosenView!.layer.borderWidth = 1
+        chosenView!.layer.borderColor =  UIColor.black.cgColor
+        }
+    }
     func saveItemToArray()
     {
         let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)

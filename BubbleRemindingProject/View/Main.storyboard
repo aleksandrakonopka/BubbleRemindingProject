@@ -179,9 +179,32 @@
                                     <constraint firstItem="DRY-k3-fRY" firstAttribute="top" secondItem="aiD-rO-KIp" secondAttribute="top" constant="20" id="bSr-7s-YNr"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yj-kI-Qom" customClass="BubblePicker" customModule="BubbleRemindingProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="296" width="375" height="564"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yj-kI-Qom" customClass="BubblePicker" customModule="BubbleRemindingProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="103" width="375" height="564"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih5-x0-z1e">
+                                        <rect key="frame" x="0.0" y="500" width="375" height="64"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All your bubbles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXg-As-EZW">
+                                                <rect key="frame" x="64" y="8" width="247" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ih5-x0-z1e" secondAttribute="height" multiplier="375:64" id="vJc-BR-BPn"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ih5-x0-z1e" firstAttribute="leading" secondItem="5yj-kI-Qom" secondAttribute="leading" id="1PN-ad-cW8"/>
+                                    <constraint firstAttribute="trailing" secondItem="ih5-x0-z1e" secondAttribute="trailing" id="88k-vt-HJk"/>
+                                    <constraint firstAttribute="bottom" secondItem="ih5-x0-z1e" secondAttribute="bottom" id="y11-5V-V2I"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,6 +227,7 @@
                         <outlet property="deleteBubble" destination="cpR-6w-9mq" id="OfU-HA-U6e"/>
                         <outlet property="editBubble" destination="BaU-1M-Uqo" id="LKi-4J-bUW"/>
                         <outlet property="editDeleteView" destination="tME-56-jPK" id="b8n-B6-d1h"/>
+                        <outlet property="placeLabel" destination="CXg-As-EZW" id="gIn-gc-BHd"/>
                         <outlet property="selectedDateLabel" destination="LDq-RE-O3S" id="2ex-IV-tlG"/>
                         <outlet property="selectedNameLabel" destination="jmp-gt-Yd1" id="XG0-Ro-YUI"/>
                         <outlet property="selectedPlaceLabel" destination="U7G-gs-ZET" id="0Xp-LE-YiS"/>
@@ -213,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD1-ha-kUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="399" y="-924"/>
+            <point key="canvasLocation" x="397.60000000000002" y="-924.28785607196414"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6sr-Fe-sp2">
@@ -247,7 +271,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="icx-fK-e1R"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="36"/>
                                 <state key="normal" title="Bubbles">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -262,7 +286,7 @@
                                     <constraint firstAttribute="height" constant="80" id="ygO-yz-mGQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="31"/>
-                                <state key="normal" title="Map">
+                                <state key="normal" title="Map" backgroundImage="gradient2.jpg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="1" green="0.89115596900000005" blue="0.92464299930000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -277,7 +301,7 @@
                                     <constraint firstAttribute="height" constant="80" id="Td0-yY-HJR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="26"/>
-                                <state key="normal" title="Your places">
+                                <state key="normal" title="Your places" backgroundImage="gradient2.jpg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -418,7 +442,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RG-Mr-CgK">
                                                 <rect key="frame" x="20" y="63" width="207" height="33"/>
-                                                <color key="backgroundColor" red="0.9866454005241394" green="0.65085557203731126" blue="0.64125636650244733" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="1" green="0.31605869780000001" blue="0.33570003240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="8RG-Mr-CgK" secondAttribute="height" multiplier="69:11" id="tSI-4q-FHn"/>
                                                 </constraints>
@@ -455,7 +479,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="8RG-Mr-CgK" secondAttribute="bottom" constant="13" id="6Sb-p0-TT3"/>
                                             <constraint firstItem="he3-qW-nUJ" firstAttribute="leading" secondItem="L8u-53-sf6" secondAttribute="leading" constant="20" id="7e1-Vo-h67"/>
@@ -934,7 +957,10 @@
             <point key="canvasLocation" x="1880.8" y="91.304347826086968"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gradient2.jpg" width="1920" height="1543"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wBm-Pz-siH"/>
+        <segue reference="FMY-eg-N3b"/>
     </inferredMetricsTieBreakers>
 </document>

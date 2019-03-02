@@ -18,6 +18,7 @@ protocol SendBackMyListOfItemsFromBubblesToTable
 }
 
 class BubblesViewController: UIViewController {
+    @IBOutlet var placeLabel: UILabel!
     var fromMainVc = false
     var addBubbleToDifferentPlace = false
     var addedBubblePlace = ""
@@ -54,6 +55,11 @@ class BubblesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        placeLabel.text = chosenPlace
+        if chosenPlace == ""
+        {
+           placeLabel.text = "All Your Bubbles"
+        }
         bubblePicker.delegate = self
         editDeleteView.isHidden = true
         //od tad
