@@ -15,6 +15,7 @@ protocol SendBackMyListOfItemsFromBubblesToView
 
 class BubblesViewController: UIViewController {
     
+    var chosenPlace = ""
     var bubblesFromOnePlace = false
     var isEditingBubble = false
     @IBOutlet var editDeleteView: UIView!
@@ -178,7 +179,7 @@ class BubblesViewController: UIViewController {
             if segue.identifier == "goToAddFromBubbles"
             {
                 let addVC = segue.destination as! AddItemViewController
-                addVC.allMyItems = items
+                addVC.allMyItems = allItems
                 addVC.favouritePlaces = favouritePlaces
                 addVC.delegate = self
                 addVC.isEditingBubble = isEditingBubble
@@ -207,23 +208,40 @@ class BubblesViewController: UIViewController {
             let cancel = UIAlertAction(title: "Cancel", style: .cancel){
                 action in
             }
+            
             let yes = UIAlertAction(title: "Yes", style: .default){
                 action in
-            
-          for i in 0...self.items.count
-          {
-            if i == self.selectedBubbleIndex
-            {
-                self.items.remove(at: i)
-            }
-          }
-            self.bubblePicker.deleteAll(howMuch:self.items.count+1)
-            self.bubblePicker.loadData()
-            self.saveItemToPlist()
-            self.editDeleteView.isHidden = true
-            self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+                //deleting from all items
+                    var index = 0
+                    for element in self.allItems
+                    {
+                          if  self.items[self.selectedBubbleIndex].placeName == element.placeName && self.items[self.selectedBubbleIndex].item == element.item && self.items[self.selectedBubbleIndex].date == element.date
+                        {
+                           self.allItems.remove(at: index)
+        
+                        }
+                        else
+                          {
+                            index = index + 1
+                        }
+                    }
+                //deleting from shownItems (Bubbles)
+                  for i in 0...self.items.count
+                  {
+                    if i == self.selectedBubbleIndex
+                    {
+                        self.items.remove(at: i)
+                    }
+                  }
+                self.bubblePicker.deleteAll(howMuch:self.items.count+1)
+                self.bubblePicker.loadData()
+                self.saveItemToPlist()
+                self.editDeleteView.isHidden = true
+                self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
                 
+                print("All items: \(self.allItems)")
             }
+            
             alert.addAction(cancel)
             alert.addAction(yes)
             self.present(alert,animated: true, completion: nil)
@@ -244,7 +262,22 @@ class BubblesViewController: UIViewController {
 extension BubblesViewController: SendBackMyListOfItems
 {
     func toDoListArrayReceived(listOfItems: [ToDoItem]) {
-        items = listOfItems
+        allItems = listOfItems
+        if (bubblesFromOnePlace == true)
+        {
+        let tmpArray = listOfItems.filter(){
+            if $0.placeName == chosenPlace{
+                return true
+            }else{
+                return false
+            }
+        }
+        items = tmpArray
+        }
+        else
+        {
+            items = allItems
+        }
         addItem()
         print("IS EDITING BUBBLE \(isEditingBubble)")
         isEditingBubble=false

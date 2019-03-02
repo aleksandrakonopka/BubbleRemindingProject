@@ -154,6 +154,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                                     return false
                                 }
                             }
+                bubbleVC.allItems = arrayToDoItem!
                 if chosenItems != nil
                 {
                 bubbleVC.chosenPlaceItems = chosenItems!
@@ -161,6 +162,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                 else
                 {
                     bubbleVC.chosenPlaceItems = []
+                    bubbleVC.allItems = []
                 }
             }
             else
@@ -175,7 +177,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
             {
                 bubbleVC.favouritePlaces = []
             }
-            
+            bubbleVC.chosenPlace = placeId
         }
     }
    func toDoListArrayReceived(data: [ToDoItem]){
