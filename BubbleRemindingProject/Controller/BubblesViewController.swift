@@ -228,6 +228,7 @@ class BubblesViewController: UIViewController {
                 addVC.shownItems = items
                 addVC.favouritePlaces = favouritePlaces
                 addVC.delegate = self
+                addVC.fromWhichPlaceAdding = chosenPlace
                 addVC.isEditingBubble = isEditingBubble
                 if selectedBubbleIndex != nil{
                 addVC.indexOfEditedBubble = selectedBubbleIndex
@@ -244,6 +245,8 @@ class BubblesViewController: UIViewController {
         @IBAction func editBubblePressed(_ sender: UIButton) {
             isEditingBubble = true
             performSegue(withIdentifier: "goToAddFromBubbles", sender: self)
+            //tu dodane
+            //isEditingBubble = false
             self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
             editDeleteView.isHidden = true
             //isEditingBubble = false
@@ -329,7 +332,12 @@ extension BubblesViewController: SendBackMyListOfItems
         print("Items: \(items)")
         addItem()
         //print("IS EDITING BUBBLE \(isEditingBubble)")
+        
+        
         isEditingBubble=false
+        
+        
+        //isEditingBubble = true
         }
 }
     /*

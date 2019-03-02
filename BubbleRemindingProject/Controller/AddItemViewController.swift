@@ -19,6 +19,8 @@ protocol SendBackMyListOfItems
 //}
 
 class AddItemViewController: UIViewController {
+    
+    var fromWhichPlaceAdding = ""
     var isEditingBubble = false
     var indexOfEditedBubble: Int!
     var favouritePlaces = [FavouritePlace]()
@@ -77,19 +79,34 @@ class AddItemViewController: UIViewController {
             savedChosenDate = shownItems[indexOfEditedBubble].date
             savedChosenPlaceName = chosenPlaceName
             savedChosenItemName =  shownItems[indexOfEditedBubble].item
+            print("CHOSEN PRIORITY1: \(chosenPriority)")
             
         }
         print("hello")
         //chosenPlaceName = "Noname"
-        if(isEditing == false /*&& segueFromTable==false*/)
+        if(isEditingBubble == false /*&& segueFromTable==false*/)
         {
         chosenPriority = Priority.Low
         chosenPlaceName = "Noname"
+            if fromWhichPlaceAdding != ""
+            {
+                chosenPlaceName = fromWhichPlaceAdding
+                youHaveChosenThisPlaceLabel.text = "You have chosen \(fromWhichPlaceAdding)"
+            }
         }
+        else
+        {
+            if fromWhichPlaceAdding != ""
+            {
+                chosenPlaceName = fromWhichPlaceAdding
+                youHaveChosenThisPlaceLabel.text = "You have chosen \(fromWhichPlaceAdding)"
+            }
+        }
+        print("CHOSEN PRIORITY2: \(chosenPriority)")
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
         //animateIn(thisSubview:addPlaceNameView)
-        changeAppearance()
+        //changeAppearance()
         //print("Favourite Places \(favouritePlaces)")
         // Do any additional setup after loading the view.
     }
@@ -133,7 +150,7 @@ class AddItemViewController: UIViewController {
         {
             chosenDate = itemDataPicker.date
             animateOut(thisSubview:activeSubview)
-            if (chosenPlaceName == "Noname" /*&& segueFromTable == false*/)
+            if (true /*chosenPlaceName == "Noname"*/ /*&& segueFromTable == false*/) // jak odkomentuje chosenPlace == "Noname" to bedzie mozna w danym miejscu tylko do niego dodawac itemki
             {
                 activeSubview = addPlaceNameView
                 animateIn(thisSubview:activeSubview)
@@ -196,15 +213,15 @@ class AddItemViewController: UIViewController {
         }
         print(chosenPriority)
     }
-    func changeAppearance(){
-        let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView]
-        for chosenView in tabela
-        {
-        chosenView!.layer.cornerRadius = 10
-        chosenView!.layer.borderWidth = 1
-        chosenView!.layer.borderColor =  UIColor.black.cgColor
-        }
-    }
+//    func changeAppearance(){
+//        let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView]
+//        for chosenView in tabela
+//        {
+//        chosenView!.layer.cornerRadius = 10
+//        chosenView!.layer.borderWidth = 1
+//        chosenView!.layer.borderColor =  UIColor.black.cgColor
+//        }
+//    }
     func saveItemToArray()
     {
         let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)
