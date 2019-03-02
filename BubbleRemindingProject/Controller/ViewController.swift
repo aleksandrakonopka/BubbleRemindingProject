@@ -15,6 +15,8 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
     let center = UNUserNotificationCenter.current()
     @IBOutlet weak var whereAmILabel: UILabel!
     @IBOutlet weak var whereAmILabeltwo: UILabel!
+    @IBOutlet var goToBubblesButton: UIButton!
+    
     //To Do Items
     let dataFilePathToDoItems = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
     var arrayToDoItem: [ToDoItem]?
@@ -22,9 +24,11 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
     var tabFav: [FavouritePlace]?
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("FavouritePlaces.plist")
     private let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        // cleanToDoItems()
+        goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -85,7 +89,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             bubbleVC.delegate = self
             if ( arrayToDoItem != nil)
             {
-            bubbleVC.items = arrayToDoItem!
+                bubbleVC.items = arrayToDoItem!
             }
             else
             {
@@ -93,12 +97,19 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             }
             if ( tabFav != nil )
             {
-            bubbleVC.favouritePlaces = tabFav!
+                bubbleVC.favouritePlaces = tabFav!
             }
             else
             {
-            bubbleVC.favouritePlaces = []
+                bubbleVC.favouritePlaces = []
             }
+//            let array2 = arrayToDoItem?.filter(){
+//                if $0.placeName == "Gocław"{
+//                    return true
+//                }else{
+//                    return false
+//                }
+//            }
         }
     }
     func placeReceived(place: FavouritePlace){

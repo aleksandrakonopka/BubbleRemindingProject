@@ -241,7 +241,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hua-TN-8qF">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hua-TN-8qF">
                                 <rect key="frame" x="87" y="288" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.92984664440155029" green="0.28187742829322815" blue="0.30991783738136292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -251,11 +251,6 @@
                                 <state key="normal" title="Bubbles">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10000"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="goToBubblesPressed:" destination="L71-h2-XVR" eventType="touchUpInside" id="Vbw-hm-0oZ"/>
                                 </connections>
@@ -311,6 +306,7 @@
                         <viewLayoutGuide key="safeArea" id="8XZ-6t-dUa"/>
                     </view>
                     <connections>
+                        <outlet property="goToBubblesButton" destination="hua-TN-8qF" id="bAJ-H2-zem"/>
                         <outlet property="whereAmILabel" destination="yB5-jw-sia" id="zuQ-Q5-9BV"/>
                         <outlet property="whereAmILabeltwo" destination="ucQ-n4-iDD" id="k5w-Ny-xhk"/>
                         <segue destination="opb-TO-D1N" kind="show" identifier="goToBubbles" id="FMY-eg-N3b"/>
