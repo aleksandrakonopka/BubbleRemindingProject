@@ -162,17 +162,20 @@ public class BubblePicker: UIView {
         //        let node = delegate.bubblePicker(self, nodeFor: IndexPath(item: 0, section: 0))
         //        node.index = 0
         //        node.bubblepicker = self
-        for _ in 0..<howMuch
+        if( howMuch > 0 )
         {
-            BPGravity.removeItem(nodes[0])
-            BPDynamics.removeItem(nodes[0])
-            BPCollision.removeItem(nodes[0])
-            nodes[0].removeFromSuperview()
-            
-            let gestureRecogniser = nodes[0].gestureRecognizers![0]
-            self.removeGestureRecognizer(gestureRecogniser)
-            
-            self.nodes.remove(at: 0)
+            for _ in 0..<howMuch
+            {
+                BPGravity.removeItem(nodes[0])
+                BPDynamics.removeItem(nodes[0])
+                BPCollision.removeItem(nodes[0])
+                nodes[0].removeFromSuperview()
+                
+                let gestureRecogniser = nodes[0].gestureRecognizers![0]
+                self.removeGestureRecognizer(gestureRecogniser)
+                
+                self.nodes.remove(at: 0)
+            }
         }
         
     }

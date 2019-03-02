@@ -103,6 +103,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             {
                 bubbleVC.favouritePlaces = []
             }
+            bubbleVC.fromMainVc = true
 //            let array2 = arrayToDoItem?.filter(){
 //                if $0.placeName == "Gocław"{
 //                    return true

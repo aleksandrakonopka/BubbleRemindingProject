@@ -12,9 +12,15 @@ protocol SendBackMyListOfItemsFromBubblesToView
 {
     func toDoListArrayReceivedFromBubbles(listOfItems:[ToDoItem])
 }
+protocol SendBackMyListOfItemsFromBubblesToTable
+{
+    func toDoListArrayReceivedFromBubblesToTable(listOfItems:[ToDoItem])
+}
 
 class BubblesViewController: UIViewController {
-    
+    var fromMainVc = false
+    var addBubbleToDifferentPlace = false
+    var addedBubblePlace = ""
     var chosenPlace = ""
     var bubblesFromOnePlace = false
     var isEditingBubble = false
@@ -39,6 +45,7 @@ class BubblesViewController: UIViewController {
     var selectedBubblePriority: Priority!
     
     var delegate : SendBackMyListOfItemsFromBubblesToView?
+    var secondDelegate : SendBackMyListOfItemsFromBubblesToTable?
     var favouritePlaces = [FavouritePlace]()
     @IBOutlet weak var bubblePicker: BubblePicker!
     var items: [ToDoItem] = []
@@ -72,7 +79,8 @@ class BubblesViewController: UIViewController {
         performSegue(withIdentifier: "goToAddFromBubbles", sender: self)
     }
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        delegate?.toDoListArrayReceivedFromBubbles(listOfItems:items)
+        delegate?.toDoListArrayReceivedFromBubbles(listOfItems:allItems)
+        secondDelegate?.toDoListArrayReceivedFromBubblesToTable(listOfItems: allItems)
         dismiss(animated: true, completion:nil)
     }
 }
@@ -170,8 +178,24 @@ class BubblesViewController: UIViewController {
                  bubblePicker.deleteAll(howMuch:items.count)
             }
             else{
-                print("Weszło to")
-               bubblePicker.deleteAll(howMuch:items.count-1)
+                if ( chosenPlace != addedBubblePlace )
+                {
+                    if (fromMainVc == false)
+                    {
+                    print("weszło 1")
+                    bubblePicker.deleteAll(howMuch:items.count)
+                    }
+                    else
+                    {
+                        print("weszło 3")
+                      bubblePicker.deleteAll(howMuch:items.count-1)
+                    }
+                    
+                }
+                else{
+                print("Weszło 2")
+                bubblePicker.deleteAll(howMuch:items.count-1)
+                }
             }
             bubblePicker.loadData()
         }
@@ -180,6 +204,7 @@ class BubblesViewController: UIViewController {
             {
                 let addVC = segue.destination as! AddItemViewController
                 addVC.allMyItems = allItems
+                addVC.shownItems = items
                 addVC.favouritePlaces = favouritePlaces
                 addVC.delegate = self
                 addVC.isEditingBubble = isEditingBubble
@@ -261,25 +286,28 @@ class BubblesViewController: UIViewController {
 }
 extension BubblesViewController: SendBackMyListOfItems
 {
-    func toDoListArrayReceived(listOfItems: [ToDoItem]) {
+    func toDoListArrayReceived(listOfItems: [ToDoItem], addedPlace: String) {
+        addedBubblePlace = addedPlace
         allItems = listOfItems
+        
         if (bubblesFromOnePlace == true)
         {
-        let tmpArray = listOfItems.filter(){
-            if $0.placeName == chosenPlace{
-                return true
-            }else{
-                return false
+            let tmpArray = listOfItems.filter(){
+                if $0.placeName == chosenPlace{
+                    return true
+                }else{
+                    return false
+                }
             }
-        }
-        items = tmpArray
+            items = tmpArray
         }
         else
         {
             items = allItems
         }
+        print("Items: \(items)")
         addItem()
-        print("IS EDITING BUBBLE \(isEditingBubble)")
+        //print("IS EDITING BUBBLE \(isEditingBubble)")
         isEditingBubble=false
         }
 }

@@ -10,28 +10,28 @@ import UIKit
 
 protocol SendBackMyListOfItems
 {
-    func toDoListArrayReceived(listOfItems:[ToDoItem])
+    func toDoListArrayReceived(listOfItems:[ToDoItem], addedPlace: String)
 }
 
-protocol SendBackMyListOfItemsToTable
-{
-    func toDoListArrayReceived(listOfItems:[ToDoItem])
-}
+//protocol SendBackMyListOfItemsToTable
+//{
+//    func toDoListArrayReceived(listOfItems:[ToDoItem])
+//}
 
 class AddItemViewController: UIViewController {
-    
     var isEditingBubble = false
     var indexOfEditedBubble: Int!
     var favouritePlaces = [FavouritePlace]()
     var selectedRow : IndexPath!
     @IBOutlet var myTable: UITableView!
-    var segueFromTable = false
+   // var segueFromTable = false
     
     var delegate : SendBackMyListOfItems?
-    var tabledelegate : SendBackMyListOfItemsToTable?
+    //var tabledelegate : SendBackMyListOfItemsToTable?
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
     
     var allMyItems = [ToDoItem]()
+    var shownItems = [ToDoItem]()
     @IBOutlet var alertLabel: UILabel!
     
     @IBOutlet var itemTextField: UITextField!
@@ -42,6 +42,13 @@ class AddItemViewController: UIViewController {
     var chosenDate:Date!
     var chosenItemName:String!
     var chosenPlaceName:String!
+    
+    //for comparing later
+    var savedChosenPriority:Priority!
+    var savedChosenDate:Date!
+    var savedChosenItemName:String!
+    var savedChosenPlaceName:String!
+    
     @IBOutlet var youHaveChosenThisPlaceLabel: UILabel!
     @IBOutlet var chosenPriorityLabel: UILabel!
     
@@ -60,16 +67,21 @@ class AddItemViewController: UIViewController {
         super.viewDidLoad()
         if(isEditingBubble==true)
         {
-            itemTextField.text = allMyItems[indexOfEditedBubble].item
-            itemDataPicker.date = allMyItems[indexOfEditedBubble].date
-            chosenPriority = allMyItems[indexOfEditedBubble].priority
-            chosenPlaceName = allMyItems[indexOfEditedBubble].placeName
-            youHaveChosenThisPlaceLabel.text = "You have chosen \(allMyItems[indexOfEditedBubble].placeName)"
-            chosenPriorityLabel.text = "Chosen priority: \(allMyItems[indexOfEditedBubble].priority.rawValue)"
+            itemTextField.text = shownItems[indexOfEditedBubble].item
+            itemDataPicker.date = shownItems[indexOfEditedBubble].date
+            chosenPriority = shownItems[indexOfEditedBubble].priority
+            chosenPlaceName = shownItems[indexOfEditedBubble].placeName
+            youHaveChosenThisPlaceLabel.text = "You have chosen \(shownItems[indexOfEditedBubble].placeName)"
+            chosenPriorityLabel.text = "Chosen priority: \(shownItems[indexOfEditedBubble].priority.rawValue)"
+            savedChosenPriority = chosenPriority
+            savedChosenDate = shownItems[indexOfEditedBubble].date
+            savedChosenPlaceName = chosenPlaceName
+            savedChosenItemName =  shownItems[indexOfEditedBubble].item
+            
         }
         print("hello")
         //chosenPlaceName = "Noname"
-        if(isEditing == false && segueFromTable==false)
+        if(isEditing == false /*&& segueFromTable==false*/)
         {
         chosenPriority = Priority.Low
         chosenPlaceName = "Noname"
@@ -121,14 +133,14 @@ class AddItemViewController: UIViewController {
         {
             chosenDate = itemDataPicker.date
             animateOut(thisSubview:activeSubview)
-            if (chosenPlaceName == "Noname" && segueFromTable == false)
+            if (chosenPlaceName == "Noname" /*&& segueFromTable == false*/)
             {
                 activeSubview = addPlaceNameView
                 animateIn(thisSubview:activeSubview)
             }
             else
             {
-                segueFromTable = false
+                //segueFromTable = false
                 activeSubview = addPriorityView
                 animateIn(thisSubview:activeSubview)
             }
@@ -204,14 +216,22 @@ class AddItemViewController: UIViewController {
         {
             for i in 0...allMyItems.count-1
             {
-                if(indexOfEditedBubble == i)
+                print("Z tabeli: \(allMyItems[i].item)")
+                print("Zapisane: \(savedChosenItemName)")
+                if(savedChosenItemName == allMyItems[i].item && savedChosenPlaceName == allMyItems[i].placeName && savedChosenDate == allMyItems[i].date)
                 {
                     allMyItems[i] = newItem
+                    print("WESZLOOOOO")
                 }
+//                if(indexOfEditedBubble == i)
+//                {
+//                    allMyItems[i] = newItem
+//                }
             }
         }
-            delegate?.toDoListArrayReceived(listOfItems:allMyItems)
-        tabledelegate?.toDoListArrayReceived(listOfItems: allMyItems)
+        print("NEW ITEM \(newItem)")
+            delegate?.toDoListArrayReceived(listOfItems:allMyItems,addedPlace:chosenPlaceName!)
+        //tabledelegate?.toDoListArrayReceived(listOfItems: allMyItems)
         saveItemToPlist()
     }
     func saveItemToPlist()

@@ -18,7 +18,7 @@ protocol SendBackToDoListArrayFromFavVCToVC
 {
     func toDoListArrayReceivedFromFavVC(data:[ToDoItem])
 }
-class FavouritesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, SendBackToDoListArray{
+class FavouritesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource/*, SendBackToDoListArray*/{
     var placeId = "noId"
     let dataFilePathToDoItems = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("FavouritePlaces.plist")
@@ -144,7 +144,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
         {
             let bubbleVC = segue.destination as! BubblesViewController
             bubbleVC.bubblesFromOnePlace = true
-            //bubbleVC.delegate = self
+            bubbleVC.secondDelegate = self
             if ( arrayToDoItem != nil)
             {
                             let chosenItems = arrayToDoItem?.filter(){
@@ -208,4 +208,11 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
 //    }
 
 
+}
+extension FavouritesViewController : SendBackMyListOfItemsFromBubblesToTable
+{
+    func toDoListArrayReceivedFromBubblesToTable(listOfItems: [ToDoItem]) {
+        arrayToDoItem = listOfItems
+    }
+    
 }
