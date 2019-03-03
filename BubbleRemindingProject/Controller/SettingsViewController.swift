@@ -11,6 +11,9 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet var mainView: UIView!
+    @IBOutlet var colorView: UIView!
+    @IBOutlet var priorityColorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         animateIn(thisSubview: mainView)
@@ -22,9 +25,22 @@ class SettingsViewController: UIViewController {
         animateOut(thisSubview: mainView)
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func changeColorPressed(_ sender: Any) {
-        
+    @IBAction func changeColorPressed(_ sender: UIButton) {
+        animateOut(thisSubview: mainView)
+        animateIn(thisSubview: colorView)
+        if sender.tag == 0
+        {
+        priorityColorLabel.text = "Low"
+        }
+        else if sender.tag == 1
+        {
+        priorityColorLabel.text = "Medium"
+        }
+        else{
+         priorityColorLabel.text = "High"
+        }
     }
+    
     func animateIn(thisSubview:UIView)
     {
         self.view.addSubview(thisSubview)
@@ -46,13 +62,22 @@ class SettingsViewController: UIViewController {
         })
     }
     func changeAppearance(){
-        let tabela = [mainView]
+        let tabela = [mainView,colorView]
         for chosenView in tabela
         {
             chosenView!.layer.cornerRadius = 10
             chosenView!.layer.borderWidth = 1
             chosenView!.layer.borderColor =  UIColor.black.cgColor
         }
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        animateOut(thisSubview: colorView)
+        animateIn(thisSubview: mainView)
+    }
+    
+    @IBAction func pickColorPressed(_ sender: UIButton) {
+            priorityColorLabel.backgroundColor=sender.backgroundColor
     }
     /*
     // MARK: - Navigation
