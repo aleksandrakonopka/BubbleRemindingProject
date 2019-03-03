@@ -71,6 +71,7 @@ class BubblesViewController: UIViewController {
         {
             items = chosenPlaceItems
         }
+        
 //        print("All items: \(allItems)")
 //        print("Items: \(items)")
 //        print("Chosen Place Items: \(chosenPlaceItems)")

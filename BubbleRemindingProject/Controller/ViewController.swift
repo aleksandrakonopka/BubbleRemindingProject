@@ -28,7 +28,10 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
        // cleanToDoItems()
+        //goToBubblesButton.frame.size = CGSize(width:300.0,height:300.0)
         goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
+        print("goToBubblesButton.frame.width \(goToBubblesButton.frame.width)")
+        //print("changed \(goToBubblesButton)")
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
