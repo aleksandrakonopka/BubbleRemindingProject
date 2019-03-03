@@ -6,6 +6,10 @@
 //  Copyright © 2019 Aleksandra Konopka. All rights reserved.
 //
 
+var lowColor = UIColor.green
+var mediumColor = UIColor.orange
+var highColor = UIColor.red
+
 import UIKit
 
 class SettingsViewController: UIViewController {
@@ -31,13 +35,16 @@ class SettingsViewController: UIViewController {
         if sender.tag == 0
         {
         priorityColorLabel.text = "Low"
+        priorityColorLabel.backgroundColor = lowColor
         }
         else if sender.tag == 1
         {
         priorityColorLabel.text = "Medium"
+        priorityColorLabel.backgroundColor = mediumColor
         }
         else{
-         priorityColorLabel.text = "High"
+        priorityColorLabel.text = "High"
+        priorityColorLabel.backgroundColor = highColor
         }
     }
     
@@ -74,10 +81,26 @@ class SettingsViewController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         animateOut(thisSubview: colorView)
         animateIn(thisSubview: mainView)
+        if priorityColorLabel.text == "Low"
+        {
+            lowColor = priorityColorLabel.backgroundColor!
+        }
+        else if  priorityColorLabel.text == "Medium"
+        {
+            mediumColor = priorityColorLabel.backgroundColor!
+        }
+        else
+        {
+            highColor = priorityColorLabel.backgroundColor!
+        }
+        print("Low \(lowColor)")
+        print("Medium \(mediumColor)")
+        print("High \(highColor)")
     }
     
     @IBAction func pickColorPressed(_ sender: UIButton) {
             priorityColorLabel.backgroundColor=sender.backgroundColor
+            print(priorityColorLabel.backgroundColor)
     }
     /*
     // MARK: - Navigation

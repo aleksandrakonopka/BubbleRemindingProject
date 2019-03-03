@@ -142,15 +142,15 @@ class BubblesViewController: UIViewController {
             
             if items[indexPath.row].priority == Priority.Low
             {
-                node.backgroundColor = UIColor.green
+                node.backgroundColor = lowColor
             }
             if items[indexPath.row].priority == Priority.Medium
             {
-                node.backgroundColor = UIColor.orange
+                node.backgroundColor = mediumColor
             }
             if items[indexPath.row].priority == Priority.High
             {
-                node.backgroundColor = UIColor.red
+                node.backgroundColor = highColor
             }
             
             
