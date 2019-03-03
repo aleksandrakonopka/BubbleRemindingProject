@@ -2,15 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../BubbleRemindingProject/Bubbles/BubblePicker.swift">
-   </FileRef>
-   <FileRef
-      location = "group:../BubbleRemindingProject/Bubbles/BubblePickerNode.swift">
-   </FileRef>
-   <FileRef
-      location = "group:../BubbleRemindingProject/Bubbles/ipad.jpg">
-   </FileRef>
-   <FileRef
       location = "self:BubbleRemindingProject.xcodeproj">
    </FileRef>
 </Workspace>

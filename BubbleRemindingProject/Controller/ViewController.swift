@@ -29,9 +29,13 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         super.viewDidLoad()
        // cleanToDoItems()
         //goToBubblesButton.frame.size = CGSize(width:300.0,height:300.0)
-        goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
-        print("goToBubblesButton.frame.width \(goToBubblesButton.frame.width)")
-        //print("changed \(goToBubblesButton)")
+//        goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
+//        print("goToBubblesButton.frame.width \(goToBubblesButton.frame.width)")
+        
+        super.viewWillLayoutSubviews()
+       // print(goToBubblesButton.bounds)
+        //print("changed \()")
+        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -39,7 +43,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         center.requestAuthorization(options: [.alert,.sound]) { (granted, error) in
             //print(error)
         }
-//
+ 
 //        for region in locationManager.monitoredRegions {
 //            locationManager.stopMonitoring(for: region)
 //        }
@@ -52,6 +56,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         //print("ARRAY TO DO ITEM: \(arrayToDoItem)")
     }
     override func viewDidAppear(_ animated: Bool) {
+        
         print("Dla nich monitorujemy: \(locationManager.monitoredRegions)")
         var regionyMonitorowane: String = "Regiony monitorowane: "
         for region in locationManager.monitoredRegions
@@ -59,6 +64,9 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             regionyMonitorowane += " " + region.identifier
         }
         whereAmILabeltwo.text = regionyMonitorowane
+        
+        goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
+        print("goToBubblesButton.frame.width \(goToBubblesButton.frame.width)")
         //test powiadomien
 //        let title = "You entered ViewController"
 //        let body = "Bla bla bla"
