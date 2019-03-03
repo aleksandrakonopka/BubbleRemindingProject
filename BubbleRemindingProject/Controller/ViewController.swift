@@ -290,6 +290,9 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         performSegue(withIdentifier: "goToBubbles", sender: self)
     }
     
+    @IBAction func settingsButtonPressed(_ sender: UIButton) {
+         performSegue(withIdentifier: "goToSettings", sender: self)
+    }
 }
 extension ViewController : SendBackMyListOfItemsFromBubblesToView
 {
