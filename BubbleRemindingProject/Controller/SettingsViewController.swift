@@ -13,7 +13,7 @@ var highColor = UIColor.red
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    let defaults = UserDefaults.standard
     @IBOutlet var mainView: UIView!
     @IBOutlet var colorView: UIView!
     @IBOutlet var priorityColorLabel: UILabel!
@@ -46,6 +46,7 @@ class SettingsViewController: UIViewController {
         priorityColorLabel.text = "High"
         priorityColorLabel.backgroundColor = highColor
         }
+        
     }
     
     func animateIn(thisSubview:UIView)
@@ -84,14 +85,17 @@ class SettingsViewController: UIViewController {
         if priorityColorLabel.text == "Low"
         {
             lowColor = priorityColorLabel.backgroundColor!
+            defaults.setColor(color:lowColor, forKey: "LowColor")
         }
         else if  priorityColorLabel.text == "Medium"
         {
             mediumColor = priorityColorLabel.backgroundColor!
+            defaults.setColor(color:mediumColor, forKey: "MediumColor")
         }
         else
         {
             highColor = priorityColorLabel.backgroundColor!
+            defaults.setColor(color:highColor, forKey: "HighColor")
         }
         print("Low \(lowColor)")
         print("Medium \(mediumColor)")
@@ -112,4 +116,22 @@ class SettingsViewController: UIViewController {
     }
     */
 
+}
+extension UserDefaults {
+    func colorForKey(key: String) -> UIColor? {
+        var color: UIColor?
+        if let colorData = data(forKey: key) {
+            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        }
+        return color
+    }
+    
+    func setColor(color: UIColor?, forKey key: String) {
+        var colorData: NSData?
+        if let color = color {
+            colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
+        }
+        set(colorData, forKey: key)
+    }
+    
 }

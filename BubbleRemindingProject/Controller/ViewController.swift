@@ -12,6 +12,7 @@ import MapKit
 import UserNotifications
 
 class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDelegate,ReceiveNewFavouritePlace,SendBackToDoListArrayFromFavVCToVC {
+    let defaults = UserDefaults.standard
     let center = UNUserNotificationCenter.current()
     @IBOutlet weak var whereAmILabel: UILabel!
     @IBOutlet weak var whereAmILabeltwo: UILabel!
@@ -27,6 +28,21 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let color = defaults.colorForKey(key: "LowColor")
+        {
+            lowColor = color
+        }
+        if let color = defaults.colorForKey(key: "MediumColor")
+        {
+            mediumColor = color
+        }
+        if let color = defaults.colorForKey(key: "HighColor")
+        {
+            highColor = color
+        }
+        print("HIGH \(highColor)")
+        print("LOW \(lowColor)")
+        print("MEDIUM \(mediumColor)")
        // cleanToDoItems()
         //goToBubblesButton.frame.size = CGSize(width:300.0,height:300.0)
 //        goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
