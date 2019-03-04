@@ -158,15 +158,22 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             self.upsAlert(title: "UPS!", message: "You already have a place with this coordinates!")
                         }
                         else {
-                            let favName = textfield.text!
-                            let favPlace = FavouritePlace(name: favName, long: favLong, lat: favLat)
-                            //*Zamiast dodac do tablicy wysle sam element i dodam go do tablicy w viewcontrollerze głównym
-                            if (self.array?.append(favPlace)) == nil {
-                                self.array = [favPlace]
+                            if (alert.textFields?.first!.text! != "Noname" && alert.textFields!.first!.text!.count > 1  )
+                            {
+                                let favName = textfield.text!
+                                let favPlace = FavouritePlace(name: favName, long: favLong, lat: favLat)
+                                //*Zamiast dodac do tablicy wysle sam element i dodam go do tablicy w viewcontrollerze głównym
+                                if (self.array?.append(favPlace)) == nil {
+                                    self.array = [favPlace]
+                                }
+                                //self.delegate?.dataReceived(array:self.array!)
+                                self.delegate?.placeReceived(place: favPlace)
+                                //self.saveToPlist()
                             }
-                            //self.delegate?.dataReceived(array:self.array!)
-                            self.delegate?.placeReceived(place: favPlace)
-                            //self.saveToPlist()
+                            else
+                            {
+                                self.upsAlert(title: "UPS!", message: "Wrong name!")
+                            }
                         }
                     }
                 }

@@ -130,7 +130,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                 }
                 else
                 {
-                    let alert = UIAlertController(title: "Ups", message: "This name is too short!", preferredStyle: .alert )
+                    let alert = UIAlertController(title: "Ups", message: "Wrong name!", preferredStyle: .alert )
                     let okButton = UIAlertAction(title: "Ok", style: .default){ action in
                     }
                     alert.addAction(okButton)
@@ -193,6 +193,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                     }
                     self.delegate?.deletedPlaceReceived(deletedPlace:self.array![indexPath.row])
                     self.array?.remove(at: indexPath.row)
+                    self.arrayOfFavouritePlaces.remove(at: indexPath.row)
                     self.myTable.endUpdates()
                     self.saveToPlistToDoItem()
                 }
