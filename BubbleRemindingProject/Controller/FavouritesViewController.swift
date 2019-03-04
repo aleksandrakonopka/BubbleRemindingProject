@@ -22,6 +22,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     var placeId = "noId"
     let dataFilePathToDoItems = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("FavouritePlaces.plist")
+    var arrayOfFavouritePlaces = [FavouritePlace]()
     var array: [FavouritePlace]?
     var deletedPlaces: [FavouritePlace]?
     //To Do Item
@@ -47,6 +48,8 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     
     @IBOutlet weak var myTable: UITableView!
     override func viewDidLoad() {
+        array = arrayOfFavouritePlaces
+        array!.append(FavouritePlace(name: "Noname", long: 181.0, lat: 181.0))
        // loadDataToDoItem()
 //       print("ARRAY TO DO ITEMS IN FAVOURITES \(arrayToDoItem!)")
         print(dataFilePathToDoItems!)
@@ -73,7 +76,8 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
+        
+        if (editingStyle == .delete && array![indexPath.row].name != "Noname") {
             let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete this favourite place - '\(array![indexPath.row].name)' with all related ToDoItems?", preferredStyle: .alert )
             let yesButton = UIAlertAction(title: "Yes", style: .default){ action in
                 print("Yes")
@@ -113,6 +117,14 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
 //            array?.remove(at: indexPath.row)
 //            myTable.endUpdates()
         }
+         if (editingStyle == .delete && array![indexPath.row].name == "Noname") {
+            let alertNoname = UIAlertController(title: "Im sorry", message: "You cannot delete \"Noname\" - it is not a place!", preferredStyle: .alert )
+            let yesButtonNoname = UIAlertAction(title: "Ok", style: .default){ action in
+            }
+            alertNoname.addAction(yesButtonNoname)
+            self.present(alertNoname,animated: true, completion: nil)
+            }
+        
     }
     func saveToPlist()
     {
@@ -169,9 +181,9 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
             {
                 bubbleVC.chosenPlaceItems = []
             }
-            if ( array != nil )
+            if ( arrayOfFavouritePlaces.count > 0 )
             {
-                bubbleVC.favouritePlaces = array!
+                bubbleVC.favouritePlaces = arrayOfFavouritePlaces
             }
             else
             {

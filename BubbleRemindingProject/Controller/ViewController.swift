@@ -104,7 +104,9 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
 //            {
 //            print("We send this:\(tabFav!)")
 //            }
-            favouritesVC.array = tabFav
+            if tabFav != nil {
+            favouritesVC.arrayOfFavouritePlaces = tabFav!
+            }
             favouritesVC.arrayToDoItem = arrayToDoItem
             favouritesVC.delegate = self
             favouritesVC.delegateSendBack = self
