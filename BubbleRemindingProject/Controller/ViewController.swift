@@ -18,6 +18,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
     @IBOutlet weak var whereAmILabeltwo: UILabel!
     @IBOutlet var goToBubblesButton: UIButton!
     
+
     //To Do Items
     let dataFilePathToDoItems = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
     var arrayToDoItem: [ToDoItem]?
@@ -65,11 +66,16 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
 //        }
         locationManager.startUpdatingLocation()
         print(locationManager.monitoredRegions)
+        //tu
+//        for region in locationManager.monitoredRegions {
+//            locationManager.stopMonitoring(for: region)
+//        }
         //Cleaning ToDoItems
      //  cleanToDoItems()
         loadData() // * wczytuje dane i zaczynam dla nich obserwowac na początku działania aplikacji
         loadDataToDoItem() // wczytuje arrayToDoItem
         //print("ARRAY TO DO ITEM: \(arrayToDoItem)")
+        print("MyTAbFav \(tabFav)")
     }
     override func viewDidAppear(_ animated: Bool) {
         
@@ -109,6 +115,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             }
             favouritesVC.arrayToDoItem = arrayToDoItem
             favouritesVC.delegate = self
+            favouritesVC.delegateSendBackPlacesAndItems = self
             favouritesVC.delegateSendBack = self
 
         }
@@ -174,6 +181,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
                 tabFav = try decoder.decode([FavouritePlace].self, from: data)
                 if tabFav != nil && tabFav!.count > 0
                 {
+                    print("MY TAB FAV: \(tabFav)")
                 startMonitoring(places:tabFav!)
                 }
             } catch{
@@ -320,3 +328,27 @@ extension ViewController : SendBackMyListOfItemsFromBubblesToView
     
     
 }
+extension ViewController : SendBackPlacesAndItems
+{
+    func itemsAndPlacesUpdate(items: [ToDoItem], places: [FavouritePlace]) {
+        arrayToDoItem = items
+        tabFav = places
+        //od nowa monitoruje zeby sie updatowala zmiana nazwy
+        for region in locationManager.monitoredRegions {
+            locationManager.stopMonitoring(for: region)
+        }
+        if tabFav != nil && tabFav!.count > 0
+        {
+            startMonitoring(places:tabFav!)
+        }
+        var regionyMonitorowane: String = "Regiony monitorowane: "
+        for region in locationManager.monitoredRegions
+        {
+            regionyMonitorowane += " " + region.identifier
+        }
+        whereAmILabeltwo.text = regionyMonitorowane
+    }
+    
+    
+}
+
