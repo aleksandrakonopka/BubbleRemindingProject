@@ -56,6 +56,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
         super.viewDidLoad()
         
     }
+
     @IBAction func backButtonPressed(_ sender: UIButton) {
 //        if array != nil {
 //        delegate?.arrayReceived(array: array!)
@@ -74,56 +75,115 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
+            print("Edit Clicked")
+        }
+        editButton.backgroundColor = UIColor.blue
+        
+        let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
+            if (self.array![indexPath.row].name != "Noname") {
+                let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete this favourite place - '\(self.array![indexPath.row].name)' with all related ToDoItems?", preferredStyle: .alert )
+                let yesButton = UIAlertAction(title: "Yes", style: .default){ action in
+                    print("Yes")
+                    // NIE USUWAC
+                    self.myTable.beginUpdates()
+                    self.myTable.deleteRows(at: [indexPath], with: .left)
+                    var number = 0
+                    for element in self.arrayToDoItem!
+                    {
+                        if(element.placeName == self.array![indexPath.row].name)
+                        {
+                            self.arrayToDoItem?.remove(at: number)
+                        }
+                        else
+                        {
+                            number = number + 1
+                        }
+                    }
+                    self.delegate?.deletedPlaceReceived(deletedPlace:self.array![indexPath.row])
+                    self.array?.remove(at: indexPath.row)
+                    self.myTable.endUpdates()
+                    self.saveToPlistToDoItem()
+                }
+                
+                let noButton = UIAlertAction(title: "No", style: .cancel){
+                    action in
+                    print("No")
+                }
+                alert.addAction(yesButton)
+                alert.addAction(noButton)
+                self.present(alert,animated: true, completion: nil)
+                
+                //NIE USUWAC
+                //            myTable.beginUpdates()
+                //            myTable.deleteRows(at: [indexPath], with: .left)
+                //            self.delegate?.deletedPlaceReceived(deletedPlace:array![indexPath.row])
+                //            array?.remove(at: indexPath.row)
+                //            myTable.endUpdates()
+            }
+            if (self.array![indexPath.row].name == "Noname") {
+                let alertNoname = UIAlertController(title: "Im sorry", message: "You cannot delete \"Noname\" - it is not a place!", preferredStyle: .alert )
+                let yesButtonNoname = UIAlertAction(title: "Ok", style: .default){ action in
+                }
+                alertNoname.addAction(yesButtonNoname)
+                self.present(alertNoname,animated: true, completion: nil)
+            }
+            
+        }
+        deleteButton.backgroundColor = UIColor.red
+        
+        return [editButton,deleteButton]
+    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if (editingStyle == .delete && array![indexPath.row].name != "Noname") {
-            let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete this favourite place - '\(array![indexPath.row].name)' with all related ToDoItems?", preferredStyle: .alert )
-            let yesButton = UIAlertAction(title: "Yes", style: .default){ action in
-                print("Yes")
-               // NIE USUWAC
-                self.myTable.beginUpdates()
-                self.myTable.deleteRows(at: [indexPath], with: .left)
-                var number = 0
-                for element in self.arrayToDoItem!
-                {
-                    if(element.placeName == self.array![indexPath.row].name)
-                    {
-                        self.arrayToDoItem?.remove(at: number)
-                    }
-                    else
-                    {
-                        number = number + 1
-                    }
-                }
-                self.delegate?.deletedPlaceReceived(deletedPlace:self.array![indexPath.row])
-                self.array?.remove(at: indexPath.row)
-                self.myTable.endUpdates()
-                self.saveToPlistToDoItem()
-            }
-            
-            let noButton = UIAlertAction(title: "No", style: .cancel){
-                action in
-                print("No")
-            }
-            alert.addAction(yesButton)
-            alert.addAction(noButton)
-            self.present(alert,animated: true, completion: nil)
-            
-            //NIE USUWAC
-//            myTable.beginUpdates()
-//            myTable.deleteRows(at: [indexPath], with: .left)
-//            self.delegate?.deletedPlaceReceived(deletedPlace:array![indexPath.row])
-//            array?.remove(at: indexPath.row)
-//            myTable.endUpdates()
-        }
-         if (editingStyle == .delete && array![indexPath.row].name == "Noname") {
-            let alertNoname = UIAlertController(title: "Im sorry", message: "You cannot delete \"Noname\" - it is not a place!", preferredStyle: .alert )
-            let yesButtonNoname = UIAlertAction(title: "Ok", style: .default){ action in
-            }
-            alertNoname.addAction(yesButtonNoname)
-            self.present(alertNoname,animated: true, completion: nil)
-            }
+//        if (editingStyle == .delete && array![indexPath.row].name != "Noname") {
+//            let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete this favourite place - '\(array![indexPath.row].name)' with all related ToDoItems?", preferredStyle: .alert )
+//            let yesButton = UIAlertAction(title: "Yes", style: .default){ action in
+//                print("Yes")
+//               // NIE USUWAC
+//                self.myTable.beginUpdates()
+//                self.myTable.deleteRows(at: [indexPath], with: .left)
+//                var number = 0
+//                for element in self.arrayToDoItem!
+//                {
+//                    if(element.placeName == self.array![indexPath.row].name)
+//                    {
+//                        self.arrayToDoItem?.remove(at: number)
+//                    }
+//                    else
+//                    {
+//                        number = number + 1
+//                    }
+//                }
+//                self.delegate?.deletedPlaceReceived(deletedPlace:self.array![indexPath.row])
+//                self.array?.remove(at: indexPath.row)
+//                self.myTable.endUpdates()
+//                self.saveToPlistToDoItem()
+//            }
+//            
+//            let noButton = UIAlertAction(title: "No", style: .cancel){
+//                action in
+//                print("No")
+//            }
+//            alert.addAction(yesButton)
+//            alert.addAction(noButton)
+//            self.present(alert,animated: true, completion: nil)
+//            
+//            //NIE USUWAC
+////            myTable.beginUpdates()
+////            myTable.deleteRows(at: [indexPath], with: .left)
+////            self.delegate?.deletedPlaceReceived(deletedPlace:array![indexPath.row])
+////            array?.remove(at: indexPath.row)
+////            myTable.endUpdates()
+//        }
+//         if (editingStyle == .delete && array![indexPath.row].name == "Noname") {
+//            let alertNoname = UIAlertController(title: "Im sorry", message: "You cannot delete \"Noname\" - it is not a place!", preferredStyle: .alert )
+//            let yesButtonNoname = UIAlertAction(title: "Ok", style: .default){ action in
+//            }
+//            alertNoname.addAction(yesButtonNoname)
+//            self.present(alertNoname,animated: true, completion: nil)
+//            }
         
     }
     func saveToPlist()
