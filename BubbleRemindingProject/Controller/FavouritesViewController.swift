@@ -108,8 +108,10 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                             index = index + 1
                         }
                         self.myTable.reloadData()
-                        self.saveToPlistAOFP()
-                        self.saveToPlistToDoItem()
+                        self.saveToChosenPlist(filePath: self.dataFilePath!, table: self.arrayOfFavouritePlaces)
+                        self.saveToChosenPlist(filePath: self.dataFilePathToDoItems!, table: self.arrayToDoItem)
+//                        self.saveToPlistAOFP()
+//                        self.saveToPlistToDoItem()
     //                    print(self.arrayToDoItem)
     //                    print(self.array)
     //                    print(self.arrayOfFavouritePlaces)
@@ -159,7 +161,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                     self.array?.remove(at: indexPath.row)
                     self.arrayOfFavouritePlaces.remove(at: indexPath.row)
                     self.myTable.endUpdates()
-                    self.saveToPlistToDoItem()
+                    self.saveToChosenPlist(filePath: self.dataFilePathToDoItems!, table: self.arrayToDoItem)
                 }
                 
                 let noButton = UIAlertAction(title: "No", style: .cancel){
@@ -184,29 +186,42 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
         return [editButton,deleteButton]
     }
     
-    func saveToPlist()
+    func saveToChosenPlist<T: Encodable>(filePath:URL, table: T)
     {
         let encoder = PropertyListEncoder()
         do {
-            let data = try encoder.encode(self.array)
-            try data.write(to:self.dataFilePath!)
+            let data = try encoder.encode(table)
+            try data.write(to:filePath)
         }
         catch {
             print("Error encoding item array \(error)")
         }
+        print("Weszlo1")
     }
     
-    func saveToPlistAOFP()
-    {
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(self.arrayOfFavouritePlaces)
-            try data.write(to:self.dataFilePath!)
-        }
-        catch {
-            print("Error encoding item array \(error)")
-        }
-    }
+//    func saveToPlist()
+//    {
+//        let encoder = PropertyListEncoder()
+//        do {
+//            let data = try encoder.encode(self.array)
+//            try data.write(to:self.dataFilePath!)
+//        }
+//        catch {
+//            print("Error encoding item array \(error)")
+//        }
+//    }
+//
+//    func saveToPlistAOFP()
+//    {
+//        let encoder = PropertyListEncoder()
+//        do {
+//            let data = try encoder.encode(self.arrayOfFavouritePlaces)
+//            try data.write(to:self.dataFilePath!)
+//        }
+//        catch {
+//            print("Error encoding item array \(error)")
+//        }
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("INDEX PATH: \(indexPath.row), ELEMENT ID: \(array![indexPath.row].name)")
         placeId = array![indexPath.row].name
@@ -257,17 +272,17 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
    func toDoListArrayReceived(data: [ToDoItem]){
         arrayToDoItem = data
     }
-    func saveToPlistToDoItem()
-    {
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(self.arrayToDoItem)
-            try data.write(to:self.dataFilePathToDoItems!)
-        }
-        catch {
-            print("Error encoding item array \(error)")
-        }
-    }
+//    func saveToPlistToDoItem()
+//    {
+//        let encoder = PropertyListEncoder()
+//        do {
+//            let data = try encoder.encode(self.arrayToDoItem)
+//            try data.write(to:self.dataFilePathToDoItems!)
+//        }
+//        catch {
+//            print("Error encoding item array \(error)")
+//        }
+//    }
 
 }
 

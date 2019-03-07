@@ -186,7 +186,7 @@ class AddItemViewController: UIViewController {
     }
     
     @IBAction func choosePriority(_ sender: UIButton) {
-       if sender.titleLabel!.text == "Low"
+        if sender.titleLabel!.text == "Low"
        {
         chosenPriority = Priority.Low
         chosenPriorityLabel.text = "Chosen priority: Low"

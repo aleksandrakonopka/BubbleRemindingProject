@@ -169,45 +169,7 @@ class BubblesViewController: UIViewController {
         }
         
         func addItem(){
-            //Argumenty do delete all w zaleznosci od sytuacji:
-            
-            //1. Edycja z baniek items.count
-            //2. Edycja z chosen bubbles items.count
-            //3. Dodawanie z baniek iitems.count-1
-            //4. Dodawanie z chosen bubbles dla tego samego miejsca items.count-1
-            //5. Dodawanie z chosen bubbles dla roznych miejsc items.count
-            //6. Edycja w chosen bubbles items.count
-            //7. Edycja w chosen bubbles tak ze zmienia sie lokalizacja items.count + 1
-            
-            if isEditingBubble == true
-            {
-                if chosenPlace != addedBubblePlace && fromMainVc == false
-                {
-                    bubblePicker.deleteAll(howMuch:items.count+1)
-                }
-                else
-                {
-                    bubblePicker.deleteAll(howMuch:items.count)
-                }
-            }
-            else{
-                if fromMainVc == true
-                {
-                    bubblePicker.deleteAll(howMuch:items.count-1)
-                }
-                else
-                {
-                    if chosenPlace != addedBubblePlace
-                    {
-                        bubblePicker.deleteAll(howMuch:items.count)
-                    }
-                    else
-                    {
-                        bubblePicker.deleteAll(howMuch:items.count-1)
-                    }
-                }
-                
-            }
+            bubblePicker.deleteAllItems()
             bubblePicker.loadData()
         }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -235,7 +197,7 @@ class BubblesViewController: UIViewController {
         @IBAction func editBubblePressed(_ sender: UIButton) {
             isEditingBubble = true
             performSegue(withIdentifier: "goToAddFromBubbles", sender: self)
-            self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+            //self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
             editDeleteView.isHidden = true
             isEditingBubble = false
         }
@@ -270,11 +232,11 @@ class BubblesViewController: UIViewController {
                     self.items.remove(at: i)
                 }
               }
-            self.bubblePicker.deleteAll(howMuch:self.items.count+1)
+            self.bubblePicker.deleteAllItems()
             self.bubblePicker.loadData()
             self.saveItemToPlist()
             self.editDeleteView.isHidden = true
-            self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
+           // self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
            // print("All items: \(self.allItems)")
         }
         alert.addAction(cancel)
