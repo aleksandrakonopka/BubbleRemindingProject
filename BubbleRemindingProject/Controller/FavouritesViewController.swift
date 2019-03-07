@@ -110,8 +110,6 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                         self.myTable.reloadData()
                         self.saveToChosenPlist(filePath: self.dataFilePath!, table: self.arrayOfFavouritePlaces)
                         self.saveToChosenPlist(filePath: self.dataFilePathToDoItems!, table: self.arrayToDoItem)
-//                        self.saveToPlistAOFP()
-//                        self.saveToPlistToDoItem()
     //                    print(self.arrayToDoItem)
     //                    print(self.array)
     //                    print(self.arrayOfFavouritePlaces)
@@ -135,7 +133,6 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                 self.present(alert,animated: true, completion: nil)
             }
         }
-       
         editButton.backgroundColor = UIColor.blue
         
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
@@ -198,30 +195,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
         }
         print("Weszlo1")
     }
-    
-//    func saveToPlist()
-//    {
-//        let encoder = PropertyListEncoder()
-//        do {
-//            let data = try encoder.encode(self.array)
-//            try data.write(to:self.dataFilePath!)
-//        }
-//        catch {
-//            print("Error encoding item array \(error)")
-//        }
-//    }
-//
-//    func saveToPlistAOFP()
-//    {
-//        let encoder = PropertyListEncoder()
-//        do {
-//            let data = try encoder.encode(self.arrayOfFavouritePlaces)
-//            try data.write(to:self.dataFilePath!)
-//        }
-//        catch {
-//            print("Error encoding item array \(error)")
-//        }
-//    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("INDEX PATH: \(indexPath.row), ELEMENT ID: \(array![indexPath.row].name)")
         placeId = array![indexPath.row].name
@@ -272,18 +246,6 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
    func toDoListArrayReceived(data: [ToDoItem]){
         arrayToDoItem = data
     }
-//    func saveToPlistToDoItem()
-//    {
-//        let encoder = PropertyListEncoder()
-//        do {
-//            let data = try encoder.encode(self.arrayToDoItem)
-//            try data.write(to:self.dataFilePathToDoItems!)
-//        }
-//        catch {
-//            print("Error encoding item array \(error)")
-//        }
-//    }
-
 }
 
 extension FavouritesViewController : SendBackMyListOfItemsFromBubblesToTable

@@ -37,9 +37,6 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         {
             highColor = color
         }
-//        print("HIGH \(highColor)")
-//        print("LOW \(lowColor)")
-//        print("MEDIUM \(mediumColor)")
        // cleanToDoItems()
         super.viewWillLayoutSubviews()
         locationManager.delegate = self
@@ -65,9 +62,11 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         
         //print("Dla nich monitorujemy: \(locationManager.monitoredRegions)")
         var regionyMonitorowane: String = "Regiony monitorowane: "
+        print("regiony: ")
         for region in locationManager.monitoredRegions
         {
             regionyMonitorowane += " " + region.identifier
+            print(region.identifier)
         }
         whereAmILabeltwo.text = regionyMonitorowane
         goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
@@ -282,14 +281,17 @@ extension ViewController : SendBackPlacesAndItems
         for region in locationManager.monitoredRegions {
             locationManager.stopMonitoring(for: region)
         }
+        
         if tabFav != nil && tabFav!.count > 0
         {
             startMonitoring(places:tabFav!)
         }
         var regionyMonitorowane: String = "Regiony monitorowane: "
+        print("regiony2:")
         for region in locationManager.monitoredRegions
         {
             regionyMonitorowane += " " + region.identifier
+            print(region.identifier)
         }
         whereAmILabeltwo.text = regionyMonitorowane
     }
