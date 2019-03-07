@@ -271,7 +271,8 @@ class BubblesViewController: UIViewController {
             //isEditingBubble = false
             self.setSelectedLabels(name: "-", place: "-", date: "-", priority: "-")
             editDeleteView.isHidden = true
-            //isEditingBubble = false
+            //to Tu
+            isEditingBubble = false
         }
         
         @IBAction func deleteBubblePressed(_ sender: UIButton) {
