@@ -13,6 +13,7 @@ enum Priority : String, Codable {
     case Low = "Low"
 }
 struct ToDoItem:Codable {
+
     var placeName: String
     var item: String
     var priority : Priority

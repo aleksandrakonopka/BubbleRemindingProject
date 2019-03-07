@@ -152,6 +152,7 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                     self.array = [favPlace]
                                 }
                                 self.delegate?.placeReceived(place: favPlace)
+                                self.upsAlert(title: "Oh yea", message: "New item has been successfully added!")
                             }
                             else
                             {

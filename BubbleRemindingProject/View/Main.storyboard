@@ -1228,6 +1228,7 @@
                         <outlet property="itemTextField" destination="vgk-ei-ZHC" id="fwI-7K-fvf"/>
                         <outlet property="myTable" destination="mot-p1-nGn" id="jEd-4m-83s"/>
                         <outlet property="priorityDoneButton" destination="gTl-9q-t6c" id="jFq-WG-heQ"/>
+                        <outlet property="upsView" destination="zNs-43-McX" id="dAe-58-Rzz"/>
                         <outlet property="youHaveChosenThisPlaceLabel" destination="Isp-Lx-NQv" id="sFj-zD-qWR"/>
                     </connections>
                 </viewController>
@@ -1330,6 +1331,29 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="Q4T-J4-yIZ"/>
+                </view>
+                <view contentMode="scaleToFill" id="zNs-43-McX">
+                    <rect key="frame" x="0.0" y="0.0" width="267" height="235"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oh no you already have this item!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGN-7E-MT7">
+                            <rect key="frame" x="5" y="88" width="254" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exG-mx-MKa">
+                            <rect key="frame" x="110" y="176" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Ok"/>
+                            <connections>
+                                <action selector="cancelButton:" destination="ioY-kz-pRj" eventType="touchUpInside" id="s7h-7J-i3r"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="2WZ-ix-Ba4"/>
                 </view>
                 <view contentMode="scaleToFill" id="lEv-JW-kfI" userLabel="Add Item View">
                     <rect key="frame" x="0.0" y="0.0" width="280" height="235"/>
@@ -1558,6 +1582,6 @@
         <image name="gradient2.jpg" width="1920" height="1543"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FMY-eg-N3b"/>
+        <segue reference="wBm-Pz-siH"/>
     </inferredMetricsTieBreakers>
 </document>

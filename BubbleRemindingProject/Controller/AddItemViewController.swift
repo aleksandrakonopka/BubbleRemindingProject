@@ -53,6 +53,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet var addDateView: UIView!
     @IBOutlet var addPriorityView: UIView!
     @IBOutlet var addPlaceNameView: UIView!
+    @IBOutlet var upsView: UIView!
     
     var activeSubview : UIView!
     
@@ -165,11 +166,11 @@ class AddItemViewController: UIViewController {
         else if sender.tag == 2
         {
             animateOut(thisSubview:activeSubview)
-            activeSubview = nil
+            //activeSubview = nil
             youHaveChosenThisPlaceLabel.text = "No place is chosen"
             saveItemToArray()
             isEditingBubble=false
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
         }
     }
     @IBAction func cancelButton(_ sender: UIButton) {
@@ -214,27 +215,84 @@ class AddItemViewController: UIViewController {
     }
     func saveItemToArray()
     {
+        var doAppend = true
         let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)
         if (isEditingBubble==false)
         {
-        allMyItems.append(newItem)
+            for i in 0...allMyItems.count-1
+            {
+                if(allMyItems[i].placeName == chosenPlaceName && allMyItems[i].item == chosenItemName)
+                {
+                   doAppend = false
+                }
+            }
+            if doAppend
+            {
+                allMyItems.append(newItem)
+                activeSubview = nil
+                
+            }
+            else
+            {
+                animateOut(thisSubview: activeSubview)
+                activeSubview = addItemView
+                animateIn(thisSubview:upsView)
+            }
+            doAppend = true
+            
         }
        else
         {
+            let oldItem = ToDoItem(placeName:savedChosenPlaceName, item: savedChosenItemName, priority: savedChosenPriority, date: savedChosenDate)
+            var ind = 1000
             for i in 0...allMyItems.count-1
             {
-                //print("Z tabeli: \(allMyItems[i].item)")
-               // print("Zapisane: \(savedChosenItemName)")
-                if(savedChosenItemName == allMyItems[i].item && savedChosenPlaceName == allMyItems[i].placeName && savedChosenDate == allMyItems[i].date)
+                if(allMyItems[i].placeName == chosenPlaceName && allMyItems[i].item == chosenItemName)
                 {
-                    allMyItems[i] = newItem
-                    //print("WESZLOOOOO")
+
+                    doAppend = false
+                    ind = i
+                }
+
+            }
+            for j in 0...allMyItems.count - 1
+            {
+                if( j == ind && allMyItems[ind].placeName == oldItem.placeName && allMyItems[ind].priority == oldItem.priority && allMyItems[ind].date == oldItem.date && allMyItems[ind].item == oldItem.item)
+                {
+                    doAppend = true
                 }
             }
+            if doAppend
+            {
+                for i in 0...allMyItems.count-1
+                {
+                    //print("Z tabeli: \(allMyItems[i].item)")
+                    // print("Zapisane: \(savedChosenItemName)")
+                    if(savedChosenItemName == allMyItems[i].item && savedChosenPlaceName == allMyItems[i].placeName)
+                    {
+                        allMyItems[i] = newItem
+                        //print("WESZLOOOOO")
+                    }
+                }
+                activeSubview = nil
+            }
+            else
+            {
+                animateOut(thisSubview: activeSubview)
+                activeSubview = addItemView
+                animateIn(thisSubview:upsView)
+            }
+            doAppend = true
+
         }
+        
         //print("NEW ITEM \(newItem)")
         delegate?.toDoListArrayReceived(listOfItems:allMyItems,addedPlace:chosenPlaceName!)
         saveItemToPlist()
+        if activeSubview == nil
+        {
+        self.dismiss(animated: true, completion: nil)
+        }
     }
     func saveItemToPlist()
     {
