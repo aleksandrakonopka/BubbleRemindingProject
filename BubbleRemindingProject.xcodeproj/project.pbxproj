@@ -17,7 +17,6 @@
 		6F822B4F221B363B00158C9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B49221B363B00158C9D /* ViewController.swift */; };
 		6F822B50221B363B00158C9D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B4A221B363B00158C9D /* AddViewController.swift */; };
 		6F822B51221B363B00158C9D /* BubblesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B4B221B363B00158C9D /* BubblesViewController.swift */; };
-		6F822B52221B363B00158C9D /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B4C221B363B00158C9D /* ToDoTableViewController.swift */; };
 		6F822B54221B365700158C9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F822B53221B365700158C9D /* Main.storyboard */; };
 		6F822B57221B366E00158C9D /* FavouritePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B55221B366E00158C9D /* FavouritePlace.swift */; };
 		6F822B58221B366E00158C9D /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F822B56221B366E00158C9D /* ToDoItem.swift */; };
@@ -41,7 +40,6 @@
 		6F822B49221B363B00158C9D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6F822B4A221B363B00158C9D /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		6F822B4B221B363B00158C9D /* BubblesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblesViewController.swift; sourceTree = "<group>"; };
-		6F822B4C221B363B00158C9D /* ToDoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		6F822B53221B365700158C9D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6F822B55221B366E00158C9D /* FavouritePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritePlace.swift; sourceTree = "<group>"; };
 		6F822B56221B366E00158C9D /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				6F822B4A221B363B00158C9D /* AddViewController.swift */,
 				6F822B4B221B363B00158C9D /* BubblesViewController.swift */,
 				6F822B48221B363B00158C9D /* FavouritesViewController.swift */,
-				6F822B4C221B363B00158C9D /* ToDoTableViewController.swift */,
 				6F822B49221B363B00158C9D /* ViewController.swift */,
 				6F32F295222BFABD00BBBB1B /* SettingsViewController.swift */,
 			);
@@ -221,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F822B4F221B363B00158C9D /* ViewController.swift in Sources */,
-				6F822B52221B363B00158C9D /* ToDoTableViewController.swift in Sources */,
 				6F822B29221B336200158C9D /* AppDelegate.swift in Sources */,
 				6F822B50221B363B00158C9D /* AddViewController.swift in Sources */,
 				6F822B4D221B363B00158C9D /* AddItemViewController.swift in Sources */,

@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 import MapKit
 
-
 protocol ReceiveDeletedPlace{
     func deletedPlaceReceived(deletedPlace:FavouritePlace)
 }
@@ -22,6 +21,7 @@ protocol SendBackPlacesAndItems
 {
     func itemsAndPlacesUpdate(items:[ToDoItem],places:[FavouritePlace])
 }
+
 class FavouritesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource/*, SendBackToDoListArray*/{
     var placeId = "noId"
     let dataFilePathToDoItems = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
@@ -29,10 +29,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     var arrayOfFavouritePlaces = [FavouritePlace]()
     var array: [FavouritePlace]?
     var deletedPlaces: [FavouritePlace]?
-    //To Do Item
     var arrayToDoItem: [ToDoItem]?
-    //var arrayToDoItems = [ToDoItem(placeName:"warszawa", item: "umyc kwiatki")]
-    //var delegate : ReceiveModifiedArray?
     var delegate : ReceiveDeletedPlace?
     var delegateSendBack : SendBackToDoListArrayFromFavVCToVC?
     var delegateSendBackPlacesAndItems : SendBackPlacesAndItems?
@@ -55,21 +52,12 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         array = arrayOfFavouritePlaces
         array!.append(FavouritePlace(name: "Noname", long: 181.0, lat: 181.0))
-       // loadDataToDoItem()
 //       print("ARRAY TO DO ITEMS IN FAVOURITES \(arrayToDoItem!)")
         print(dataFilePathToDoItems!)
         super.viewDidLoad()
-        
     }
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
-//        if array != nil {
-//        delegate?.arrayReceived(array: array!)
-//        }
-//        else
-//        {
-//          delegate?.arrayReceived(array: [])
-//        }
         if arrayToDoItem == nil{
             arrayToDoItem=[]
         }
@@ -98,63 +86,42 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                 let yesButton = UIAlertAction(title: "Save", style: .default){ action in
                     print("Save")
                 
-                if ( alert.textFields![0].text!.count > 1 && alert.textFields![0].text != "Noname" )
-                {
-                    var index = 0
-                    for toDoElement in self.arrayToDoItem!
+                    if ( alert.textFields![0].text!.count > 1 && alert.textFields![0].text != "Noname" )
                     {
-                        if toDoElement.placeName == self.array![indexPath.row].name
-                       {
-                         self.arrayToDoItem![index].placeName = alert.textFields![0].text!
-                        }
-                        index = index + 1
-                    }
-                    index = 0
-                    for placeElement in self.array!
-                    {
-                        if placeElement.name == self.array![indexPath.row].name
+                        var index = 0
+                        for toDoElement in self.arrayToDoItem!
                         {
-                            self.arrayOfFavouritePlaces[index].name = alert.textFields![0].text!
-                            self.array![index].name = alert.textFields![0].text!
+                            if toDoElement.placeName == self.array![indexPath.row].name
+                           {
+                             self.arrayToDoItem![index].placeName = alert.textFields![0].text!
+                            }
+                            index = index + 1
                         }
-                        index = index + 1
+                        index = 0
+                        for placeElement in self.array!
+                        {
+                            if placeElement.name == self.array![indexPath.row].name
+                            {
+                                self.arrayOfFavouritePlaces[index].name = alert.textFields![0].text!
+                                self.array![index].name = alert.textFields![0].text!
+                            }
+                            index = index + 1
+                        }
+                        self.myTable.reloadData()
+                        self.saveToPlistAOFP()
+                        self.saveToPlistToDoItem()
+    //                    print(self.arrayToDoItem)
+    //                    print(self.array)
+    //                    print(self.arrayOfFavouritePlaces)
                     }
-                    self.myTable.reloadData()
-                    self.saveToPlistAOFP()
-                    self.saveToPlistToDoItem()
-                    print(self.arrayToDoItem)
-                    print(self.array)
-                    print(self.arrayOfFavouritePlaces)
-                    //posłać przez protokół do tyłu arrayItemów i arrayUlubionych miejsc
-                    
-                }
-                else
-                {
-                    let alert = UIAlertController(title: "Ups", message: "Wrong name!", preferredStyle: .alert )
-                    let okButton = UIAlertAction(title: "Ok", style: .default){ action in
+                    else
+                    {
+                        let alert = UIAlertController(title: "Ups", message: "Wrong name!", preferredStyle: .alert )
+                        let okButton = UIAlertAction(title: "Ok", style: .default){ action in
+                        }
+                        alert.addAction(okButton)
+                        self.present(alert,animated: true, completion: nil)
                     }
-                    alert.addAction(okButton)
-                    self.present(alert,animated: true, completion: nil)
-                }
-//                    // NIE USUWAC
-//                    self.myTable.beginUpdates()
-//                    self.myTable.deleteRows(at: [indexPath], with: .left)
-//                    var number = 0
-//                    for element in self.arrayToDoItem!
-//                    {
-//                        if(element.placeName == self.array![indexPath.row].name)
-//                        {
-//                            self.arrayToDoItem?.remove(at: number)
-//                        }
-//                        else
-//                        {
-//                            number = number + 1
-//                        }
-//                    }
-//                    self.delegate?.deletedPlaceReceived(deletedPlace:self.array![indexPath.row])
-//                    self.array?.remove(at: indexPath.row)
-//                    self.myTable.endUpdates()
-//                    self.saveToPlistToDoItem()
                 }
                 
                 let noButton = UIAlertAction(title: "Cancel", style: .cancel){
@@ -164,9 +131,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                 alert.addAction(yesButton)
                 alert.addAction(noButton)
                 self.present(alert,animated: true, completion: nil)
-    
             }
-            
         }
        
         editButton.backgroundColor = UIColor.blue
@@ -174,9 +139,8 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
             if (self.array![indexPath.row].name != "Noname") {
                 let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete this favourite place - '\(self.array![indexPath.row].name)' with all related ToDoItems?", preferredStyle: .alert )
+                
                 let yesButton = UIAlertAction(title: "Yes", style: .default){ action in
-                    print("Yes")
-                    // NIE USUWAC
                     self.myTable.beginUpdates()
                     self.myTable.deleteRows(at: [indexPath], with: .left)
                     var number = 0
@@ -200,18 +164,11 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
                 
                 let noButton = UIAlertAction(title: "No", style: .cancel){
                     action in
-                    print("No")
                 }
+                
                 alert.addAction(yesButton)
                 alert.addAction(noButton)
                 self.present(alert,animated: true, completion: nil)
-                
-                //NIE USUWAC
-                //            myTable.beginUpdates()
-                //            myTable.deleteRows(at: [indexPath], with: .left)
-                //            self.delegate?.deletedPlaceReceived(deletedPlace:array![indexPath.row])
-                //            array?.remove(at: indexPath.row)
-                //            myTable.endUpdates()
             }
             if (self.array![indexPath.row].name == "Noname") {
                 let alertNonameE = UIAlertController(title: "Im sorry", message: "You cannot delete \"Noname\" - it is not a place!", preferredStyle: .alert )
@@ -226,57 +183,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
         
         return [editButton,deleteButton]
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-//        if (editingStyle == .delete && array![indexPath.row].name != "Noname") {
-//            let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete this favourite place - '\(array![indexPath.row].name)' with all related ToDoItems?", preferredStyle: .alert )
-//            let yesButton = UIAlertAction(title: "Yes", style: .default){ action in
-//                print("Yes")
-//               // NIE USUWAC
-//                self.myTable.beginUpdates()
-//                self.myTable.deleteRows(at: [indexPath], with: .left)
-//                var number = 0
-//                for element in self.arrayToDoItem!
-//                {
-//                    if(element.placeName == self.array![indexPath.row].name)
-//                    {
-//                        self.arrayToDoItem?.remove(at: number)
-//                    }
-//                    else
-//                    {
-//                        number = number + 1
-//                    }
-//                }
-//                self.delegate?.deletedPlaceReceived(deletedPlace:self.array![indexPath.row])
-//                self.array?.remove(at: indexPath.row)
-//                self.myTable.endUpdates()
-//                self.saveToPlistToDoItem()
-//            }
-//
-//            let noButton = UIAlertAction(title: "No", style: .cancel){
-//                action in
-//                print("No")
-//            }
-//            alert.addAction(yesButton)
-//            alert.addAction(noButton)
-//            self.present(alert,animated: true, completion: nil)
-//
-//            //NIE USUWAC
-////            myTable.beginUpdates()
-////            myTable.deleteRows(at: [indexPath], with: .left)
-////            self.delegate?.deletedPlaceReceived(deletedPlace:array![indexPath.row])
-////            array?.remove(at: indexPath.row)
-////            myTable.endUpdates()
-//        }
-//         if (editingStyle == .delete && array![indexPath.row].name == "Noname") {
-//            let alertNoname = UIAlertController(title: "Im sorry", message: "You cannot delete \"Noname\" - it is not a place!", preferredStyle: .alert )
-//            let yesButtonNoname = UIAlertAction(title: "Ok", style: .default){ action in
-//            }
-//            alertNoname.addAction(yesButtonNoname)
-//            self.present(alertNoname,animated: true, completion: nil)
-//            }
-        
-    }
+    
     func saveToPlist()
     {
         let encoder = PropertyListEncoder()
@@ -288,6 +195,7 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
             print("Error encoding item array \(error)")
         }
     }
+    
     func saveToPlistAOFP()
     {
         let encoder = PropertyListEncoder()
@@ -300,20 +208,12 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("INDEX PATH: \(indexPath.row), ELEMENT ID: \(array![indexPath.row].name)")
+        //print("INDEX PATH: \(indexPath.row), ELEMENT ID: \(array![indexPath.row].name)")
         placeId = array![indexPath.row].name
         performSegue(withIdentifier: "goToChosenBubbles", sender: self)
     
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToToDoList"
-//        {
-//            let toDoVC = segue.destination as! ToDoTableViewController
-//            toDoVC.placeId = placeId
-//            toDoVC.array = arrayToDoItem
-//         //   print("ARRAYTODOITEMS FAV \(arrayToDoItem!)")
-//            toDoVC.delegate = self
-//        }
         if segue.identifier == "goToChosenBubbles"
         {
             let bubbleVC = segue.destination as! BubblesViewController
@@ -356,7 +256,6 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
     }
    func toDoListArrayReceived(data: [ToDoItem]){
         arrayToDoItem = data
-        print("Zadziałało!")
     }
     func saveToPlistToDoItem()
     {
@@ -369,20 +268,9 @@ class FavouritesViewController: UIViewController,UITableViewDelegate,UITableView
             print("Error encoding item array \(error)")
         }
     }
-//    func loadDataToDoItem()
-//    {
-//        if let data = try? Data(contentsOf: dataFilePathToDoItems!) {
-//            let decoder = PropertyListDecoder()
-//            do{
-//                arrayToDoItem = try decoder.decode([ToDoItem].self, from: data)
-//            } catch{
-//                print("Error decoding item array: \(error)")
-//            }
-//        }
-//    }
-
 
 }
+
 extension FavouritesViewController : SendBackMyListOfItemsFromBubblesToTable
 {
     func toDoListArrayReceivedFromBubblesToTable(listOfItems: [ToDoItem]) {

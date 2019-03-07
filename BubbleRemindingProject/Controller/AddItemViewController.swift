@@ -13,11 +13,6 @@ protocol SendBackMyListOfItems
     func toDoListArrayReceived(listOfItems:[ToDoItem], addedPlace: String)
 }
 
-//protocol SendBackMyListOfItemsToTable
-//{
-//    func toDoListArrayReceived(listOfItems:[ToDoItem])
-//}
-
 class AddItemViewController: UIViewController {
     
     var fromWhichPlaceAdding = ""
@@ -79,10 +74,9 @@ class AddItemViewController: UIViewController {
             savedChosenDate = shownItems[indexOfEditedBubble].date
             savedChosenPlaceName = chosenPlaceName
             savedChosenItemName =  shownItems[indexOfEditedBubble].item
-            print("CHOSEN PRIORITY1: \(chosenPriority)")
+            //print("CHOSEN PRIORITY1: \(chosenPriority)")
             
         }
-        print("hello")
         //chosenPlaceName = "Noname"
         if(isEditingBubble == false /*&& segueFromTable==false*/)
         {
@@ -102,13 +96,10 @@ class AddItemViewController: UIViewController {
                 youHaveChosenThisPlaceLabel.text = "You have chosen \(fromWhichPlaceAdding)"
             }
         }
-        print("CHOSEN PRIORITY2: \(chosenPriority)")
+        //print("CHOSEN PRIORITY2: \(chosenPriority)")
         activeSubview = addItemView
         animateIn(thisSubview:activeSubview)
-        //animateIn(thisSubview:addPlaceNameView)
         changeAppearance()
-        //print("Favourite Places \(favouritePlaces)")
-        // Do any additional setup after loading the view.
     }
     func animateIn(thisSubview:UIView)
     {
@@ -157,7 +148,6 @@ class AddItemViewController: UIViewController {
             }
             else
             {
-                //segueFromTable = false
                 activeSubview = addPriorityView
                 animateIn(thisSubview:activeSubview)
             }
@@ -211,7 +201,7 @@ class AddItemViewController: UIViewController {
         chosenPriority = Priority.High
         chosenPriorityLabel.text = "Chosen priority: High"
         }
-        print(chosenPriority)
+        //print(chosenPriority)
     }
     func changeAppearance(){
         let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView]
@@ -233,22 +223,17 @@ class AddItemViewController: UIViewController {
         {
             for i in 0...allMyItems.count-1
             {
-                print("Z tabeli: \(allMyItems[i].item)")
-                print("Zapisane: \(savedChosenItemName)")
+                //print("Z tabeli: \(allMyItems[i].item)")
+               // print("Zapisane: \(savedChosenItemName)")
                 if(savedChosenItemName == allMyItems[i].item && savedChosenPlaceName == allMyItems[i].placeName && savedChosenDate == allMyItems[i].date)
                 {
                     allMyItems[i] = newItem
-                    print("WESZLOOOOO")
+                    //print("WESZLOOOOO")
                 }
-//                if(indexOfEditedBubble == i)
-//                {
-//                    allMyItems[i] = newItem
-//                }
             }
         }
-        print("NEW ITEM \(newItem)")
-            delegate?.toDoListArrayReceived(listOfItems:allMyItems,addedPlace:chosenPlaceName!)
-        //tabledelegate?.toDoListArrayReceived(listOfItems: allMyItems)
+        //print("NEW ITEM \(newItem)")
+        delegate?.toDoListArrayReceived(listOfItems:allMyItems,addedPlace:chosenPlaceName!)
         saveItemToPlist()
     }
     func saveItemToPlist()
@@ -297,6 +282,4 @@ extension AddItemViewController : UITableViewDataSource
         cell.textLabel?.text = favouritePlaces[indexPath.row].name
         return cell
     }
-    
-    
 }
