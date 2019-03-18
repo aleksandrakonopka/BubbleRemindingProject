@@ -219,27 +219,37 @@ class AddItemViewController: UIViewController {
         let newItem = ToDoItem(placeName: chosenPlaceName, item: chosenItemName, priority: chosenPriority,date: chosenDate)
         if (isEditingBubble==false)
         {
-            for i in 0...allMyItems.count-1
-            {
-                if(allMyItems[i].placeName == chosenPlaceName && allMyItems[i].item == chosenItemName)
-                {
-                   doAppend = false
-                }
-            }
-            if doAppend
+            
+            
+            if allMyItems.count == 0
             {
                 allMyItems.append(newItem)
                 activeSubview = nil
-                
             }
             else
             {
-                animateOut(thisSubview: activeSubview)
-                activeSubview = addItemView
-                animateIn(thisSubview:upsView)
-            }
-            doAppend = true
             
+                for i in 0...allMyItems.count-1
+                {
+                    if(allMyItems[i].placeName == chosenPlaceName && allMyItems[i].item == chosenItemName)
+                    {
+                       doAppend = false
+                    }
+                }
+                if doAppend
+                {
+                    allMyItems.append(newItem)
+                    activeSubview = nil
+                    
+                }
+                else
+                {
+                    animateOut(thisSubview: activeSubview)
+                    activeSubview = addItemView
+                    animateIn(thisSubview:upsView)
+                }
+                doAppend = true
+            }
         }
        else
         {
@@ -283,7 +293,6 @@ class AddItemViewController: UIViewController {
                 animateIn(thisSubview:upsView)
             }
             doAppend = true
-
         }
         
         //print("NEW ITEM \(newItem)")

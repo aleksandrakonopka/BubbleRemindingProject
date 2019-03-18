@@ -151,16 +151,16 @@ public class BubblePicker: UIView {
     
     public func deleteAllItems()
     {
-        for node in nodes
-        {
-            BPGravity.removeItem(node)
-            BPDynamics.removeItem(node)
-            BPCollision.removeItem(node)
-            node.removeFromSuperview()
-            let gestureRecogniser = node.gestureRecognizers![0]
-            self.removeGestureRecognizer(gestureRecogniser)
-        }
-        self.nodes.removeAll()
+            for node in nodes
+            {
+                BPGravity.removeItem(node)
+                BPDynamics.removeItem(node)
+                BPCollision.removeItem(node)
+                node.removeFromSuperview()
+                let gestureRecogniser = node.gestureRecognizers![0]
+                self.removeGestureRecognizer(gestureRecogniser)
+            }
+            self.nodes.removeAll()
     }
 
     @objc func panned(recogniser: UIPanGestureRecognizer){
