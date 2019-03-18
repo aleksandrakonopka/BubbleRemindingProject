@@ -205,7 +205,7 @@ class AddItemViewController: UIViewController {
         //print(chosenPriority)
     }
     func changeAppearance(){
-        let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView]
+        let tabela = [addItemView,addDateView,addPriorityView,addPlaceNameView,upsView]
         for chosenView in tabela
         {
         chosenView!.layer.cornerRadius = 10
