@@ -24,7 +24,7 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var favLongitude:Double?
     var favLatitude:Double?
     @IBOutlet weak var myMap: MKMapView!
-    var array: [FavouritePlace]?
+    var array = [FavouritePlace]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +60,8 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
 
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        if array == nil{
-            array = []
-        }
-        if array!.count >= 20
+      
+        if array.count >= 20
         {
           upsAlert(title:"UPS",message:"You can't have more than 20 favourite places!")
         }
@@ -121,7 +119,7 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let save = UIAlertAction(title: "Save", style: .default){ action in
                 if let textfield = alert.textFields?.first{
                     var found = false
-                    for element in self.array!
+                    for element in self.array
                     {
                         if (element.name == textfield.text!){
                             found = true
@@ -132,7 +130,7 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     }
                     else {
                         var coordinatesAlreadyFound = false;
-                        for element in self.array!
+                        for element in self.array
                         {
                             if (element.long == favLong && element.lat == favLat){
                                 coordinatesAlreadyFound = true
@@ -148,9 +146,7 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                 let favName = textfield.text!
                                 let favPlace = FavouritePlace(name: favName, long: favLong, lat: favLat)
                                 //*Zamiast dodac do tablicy wysle sam element i dodam go do tablicy w viewcontrollerze głównym
-                                if (self.array?.append(favPlace)) == nil {
-                                    self.array = [favPlace]
-                                }
+                                self.array.append(favPlace)
                                 self.delegate?.placeReceived(place: favPlace)
                                 self.upsAlert(title: "Oh yea", message: "New item has been successfully added!")
                             }
@@ -177,12 +173,12 @@ class AddViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBAction func showButtonPressed(_ sender: UIButton) {
         cleanMap()
-        if array != nil && array!.count>0 {
-        for element in array!
+        if array.count>0 {
+        for element in array
         {
             addPointOfInterest(element: element)
         }
-            let coordinate = CLLocationCoordinate2D(latitude: array![array!.count-1].lat, longitude: array![array!.count-1].long)
+            let coordinate = CLLocationCoordinate2D(latitude: array[array.count-1].lat, longitude: array[array.count-1].long)
             let regionFav = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
             self.myMap.setRegion(regionFav,animated:true)
         }

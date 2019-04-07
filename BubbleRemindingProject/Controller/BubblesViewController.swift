@@ -71,6 +71,7 @@ class BubblesViewController: UIViewController {
             items = chosenPlaceItems
         }
         bubblePicker.loadData()
+        print("ALL ITEMS \(allItems)")
     }
 
     @IBAction func addItemButtonPressed(_ sender: UIButton) {

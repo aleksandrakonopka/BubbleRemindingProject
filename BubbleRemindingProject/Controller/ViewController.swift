@@ -18,8 +18,8 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
     @IBOutlet weak var whereAmILabeltwo: UILabel!
     @IBOutlet var goToBubblesButton: UIButton!
     let dataFilePathToDoItems = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ToDoItems.plist")
-    var arrayToDoItem: [ToDoItem]?
-    var tabFav: [FavouritePlace]?
+    var arrayToDoItem = [ToDoItem]()
+    var tabFav = [FavouritePlace]()
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("FavouritePlaces.plist")
     private let locationManager = CLLocationManager()
     
@@ -70,6 +70,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         }
         whereAmILabeltwo.text = regionyMonitorowane
         goToBubblesButton.layer.cornerRadius = 0.5 * goToBubblesButton.frame.width
+        print("ARRAY TO DO ITEM: \(arrayToDoItem)")
         //print("goToBubblesButton.frame.width \(goToBubblesButton.frame.width)")
     }
     
@@ -83,9 +84,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         if segue.identifier == "goToFavourites"
         {
             let favouritesVC = segue.destination as! FavouritesViewController
-            if tabFav != nil {
-            favouritesVC.arrayOfFavouritePlaces = tabFav!
-            }
+            favouritesVC.arrayOfFavouritePlaces = tabFav
             favouritesVC.arrayToDoItem = arrayToDoItem
             favouritesVC.delegate = self
             favouritesVC.delegateSendBackPlacesAndItems = self
@@ -96,35 +95,18 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         {
             let bubbleVC = segue.destination as! BubblesViewController
             bubbleVC.delegate = self
-            if ( arrayToDoItem != nil)
-            {
-                bubbleVC.allItems = arrayToDoItem!
-            }
-            else
-            {
-               bubbleVC.allItems = []
-            }
-            if ( tabFav != nil )
-            {
-                bubbleVC.favouritePlaces = tabFav!
-            }
-            else
-            {
-                bubbleVC.favouritePlaces = []
-            }
+            bubbleVC.allItems = arrayToDoItem
+            bubbleVC.favouritePlaces = tabFav
             bubbleVC.fromMainVc = true
         }
     }
     func placeReceived(place: FavouritePlace){
-        if (self.tabFav?.append(place)) == nil {
-            self.tabFav = [place]
-        }
+        self.tabFav.append(place)
         startMonitoring(places: [place])
-        //print("Tab Fav \(self.tabFav!)")
         self.saveToPlist()
     }
     func deletedPlaceReceived(deletedPlace: FavouritePlace) {
-        self.tabFav?.removeAll(where: { (place) in
+        self.tabFav.removeAll(where: { (place) in
             if(place.name == deletedPlace.name)
             {
             stopMonitoring(place:place)
@@ -145,10 +127,9 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
             let decoder = PropertyListDecoder()
             do{
                 tabFav = try decoder.decode([FavouritePlace].self, from: data)
-                if tabFav != nil && tabFav!.count > 0
+                if tabFav.count > 0
                 {
-                   // print("MY TAB FAV: \(tabFav)")
-                startMonitoring(places:tabFav!)
+                startMonitoring(places:tabFav)
                 }
             } catch{
                 print("Error decoding item array: \(error)")
@@ -185,21 +166,12 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         }
     }
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        if tabFav == nil
-        {
-            tabFav = []
-        }
         whereAmILabel.text = "You entered \(region.identifier)"
         let title = "You entered \(region.identifier)"
         let body = "Have you got things to do here?"
         createNotification(title: title, body: body)
     }
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if tabFav == nil
-        {
-            tabFav = []
-        }
-
         whereAmILabel.text = "You left \(region.identifier)"
         let title = "You left \(region.identifier)"
         let body = "Have you had things to do here?"
@@ -282,9 +254,9 @@ extension ViewController : SendBackPlacesAndItems
             locationManager.stopMonitoring(for: region)
         }
         
-        if tabFav != nil && tabFav!.count > 0
+        if  tabFav.count > 0
         {
-            startMonitoring(places:tabFav!)
+            startMonitoring(places:tabFav)
         }
         var regionyMonitorowane: String = "Regiony monitorowane: "
         print("regiony2:")
