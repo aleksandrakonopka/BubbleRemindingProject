@@ -127,7 +127,7 @@ class BubblesViewController: UIViewController {
             }
 
            // print("Size: \(chosenSize)")
-            let node = BubblePickerNode(title: items[indexPath.row].item, color: UIColor.purple, image: UIImage(named: "gradient2.jpg")!, size: chosenSize, pickedTimesSize: 1.2)
+            let node = BubblePickerNode(title: items[indexPath.row].item, color: UIColor.purple, image: UIImage(named: "tlo.jpg")!, size: chosenSize, pickedTimesSize: 1.2)
             
             if items[indexPath.row].priority == Priority.Low
             {
