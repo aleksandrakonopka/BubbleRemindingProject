@@ -130,10 +130,10 @@ public class BubblePicker: UIView {
     
     public func deleteData()
     {
-        guard let delegate = delegate else {
+        guard delegate != nil else {
             return
-        }
-        let items = delegate.numberOfItems(in: self);
+        }// 7.01
+        //let items = delegate.numberOfItems(in: self);//// 7.01
         
         //        let node = delegate.bubblePicker(self, nodeFor: IndexPath(item: 0, section: 0))
         //        node.index = 0

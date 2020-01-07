@@ -147,11 +147,11 @@ class AddItemViewController: UIViewController {
                 activeSubview = addPlaceNameView
                 animateIn(thisSubview:activeSubview)
             }
-            else
-            {
-                activeSubview = addPriorityView
-                animateIn(thisSubview:activeSubview)
-            }
+//            else
+//            {
+//                activeSubview = addPriorityView
+//                animateIn(thisSubview:activeSubview)
+//            } 7.01
         }
         else if sender.tag == 3
         {

@@ -104,7 +104,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func pickColorPressed(_ sender: UIButton) {
             priorityColorLabel.backgroundColor=sender.backgroundColor
-            print(priorityColorLabel.backgroundColor)
+//            print(priorityColorLabel.backgroundColor)
     }
     /*
     // MARK: - Navigation
@@ -121,7 +121,13 @@ extension UserDefaults {
     func colorForKey(key: String) -> UIColor? {
         var color: UIColor?
         if let colorData = data(forKey: key) {
-            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+//            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+            do{
+                color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
+                
+            }catch{
+                print("ERROR OH NOOOO")
+            }// 7.01
         }
         return color
     }
@@ -129,7 +135,13 @@ extension UserDefaults {
     func setColor(color: UIColor?, forKey key: String) {
         var colorData: NSData?
         if let color = color {
-            colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
+//            colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
+//            archivedDataWithRootObject
+            do{
+                colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) as NSData
+            }catch{
+                print("ERROR OH NOOOO")
+            }// 7.01
         }
         set(colorData, forKey: key)
     }

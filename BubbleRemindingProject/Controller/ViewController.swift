@@ -44,7 +44,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
         center.requestAuthorization(options: [.alert,.sound]) { (granted, error) in
-            print(error)
+//            print(error)  7.01
         }
         locationManager.startUpdatingLocation()
         print(locationManager.monitoredRegions)
@@ -208,7 +208,7 @@ class ViewController: UIViewController, ReceiveDeletedPlace, CLLocationManagerDe
         let uuidString = UUID().uuidString
         let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
         self.center.add(request) { (error) in
-            print(error)
+//            print(error)  7.01
         }
     }
     func toDoListArrayReceivedFromFavVC(data: [ToDoItem]) {

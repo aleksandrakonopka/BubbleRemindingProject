@@ -101,7 +101,7 @@ public class BubblePickerNode: UIView {
         self.bubblepicker.BPAnimator.removeBehavior(self.bubblepicker.BPGravity)
         self.bubblepicker.BPAnimator.removeBehavior(self.bubblepicker.BPCollision)
         
-        var maskPath: UIBezierPath!
+       // var maskPath: UIBezierPath!//// 7.01
 //od tąd
         if(!isExpanded){
 //            //Pomniejszanie
